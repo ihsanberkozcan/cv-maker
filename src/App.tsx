@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { updateData, updateLinks, userDataType } from "./stores/userData";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  updateData,
+  updateLink,
+  deleteLink,
+  userDataType,
+} from "./stores/userData";
 
 import { MyDocument } from "./components/MyDocument";
 
 function App() {
-  const [websiteNames, setWebsiteNames] = useState<string[]>([""]);
-  const [links, setLinks] = useState<string[]>([""]);
+  const { links: myLinks } = useSelector((state: any) => state.userData);
   const dispatch = useDispatch();
   const handlechange = (
     e: React.ChangeEvent<HTMLInputElement>,
@@ -19,11 +23,13 @@ function App() {
     e: React.ChangeEvent<HTMLInputElement>,
     id: number
   ) => {
-    const newWebsiteName = [...websiteNames];
-    newWebsiteName[id] = e.target.value;
-    setWebsiteNames(newWebsiteName);
+    console.log(myLinks[id].link);
     dispatch(
-      updateLinks({ id: id, websiteName: e.target.value, link: links[id] })
+      updateLink({
+        id: id,
+        websiteName: e.target.value,
+        link: myLinks[id].link,
+      })
     );
   };
 
@@ -31,16 +37,49 @@ function App() {
     e: React.ChangeEvent<HTMLInputElement>,
     id: number
   ) => {
-    const newLinks = [...links];
-    newLinks[id] = e.target.value;
-    setLinks(newLinks);
+    console.log(myLinks[id].websiteName);
     dispatch(
-      updateLinks({
+      updateLink({
         id: id,
-        websiteName: websiteNames[id],
+        websiteName: myLinks[id].websiteName,
         link: e.target.value,
       })
     );
+  };
+
+  const deleteWebsiteLink = (id: number) => {
+    dispatch(deleteLink(id));
+  };
+
+  const addNewLink = () => {
+    dispatch(
+      updateLink({
+        id: myLinks.length,
+        websiteName: "",
+        link: "",
+      })
+    );
+  };
+
+  const renderLink = () => {
+    const content: any = [];
+
+    for (let i = 0; i < myLinks.length; i++) {
+      content.push(
+        <li>
+          <input
+            onChange={(e) => handleWebsiteNameChange(e, i)}
+            value={myLinks[i].websiteName}
+          />
+          <input
+            onChange={(e) => handleLinkChange(e, i)}
+            value={myLinks[i].link}
+          />
+          <button onClick={() => deleteWebsiteLink(i)}>x</button>
+        </li>
+      );
+    }
+    return content;
   };
   return (
     <div>
@@ -53,11 +92,8 @@ function App() {
       skills:
       <input onChange={(e) => handlechange(e, "skills")} />
       link:
-      <input onChange={(e) => handleWebsiteNameChange(e, 0)} />
-      <input onChange={(e) => handleLinkChange(e, 0)} />
-      <input onChange={(e) => handleWebsiteNameChange(e, 1)} />
-      <input onChange={(e) => handleLinkChange(e, 1)} />
- 
+      {renderLink()}
+      <button onClick={() => addNewLink()}>Add New Link</button>
       <MyDocument />
     </div>
   );

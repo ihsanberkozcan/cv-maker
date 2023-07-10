@@ -6,14 +6,14 @@ interface linksType {
   link: string;
 }
 
-interface experienceType {
+/* interface experienceType {
   employer: string;
   jobTitle: string;
   startDate: string;
   endDate: string;
   location: string;
   description: string;
-}
+} */
 
 export interface userDataType {
   fileName: string;
@@ -32,7 +32,7 @@ const initialState: userDataType = {
   title: "Title",
   email: "test@test.com",
   phoneNumber: "",
-  links: [{ id: 1, websiteName: "aa", link: "bb" }],
+  links: [],
   skills: "",
   experience: [],
   education: [],
@@ -51,15 +51,22 @@ const userData = createSlice({
       const { key, value } = action.payload;
       state[key] = value;
     },
-    updateLinks(state, action: PayloadAction<linksType>) {
+    updateLink(state, action: PayloadAction<linksType>) {
       const { id } = action.payload;
-      console.log(id);
       const newLinks = [...state.links];
+      console.log(newLinks);
+      console.log(action.payload);
       newLinks[id] = action.payload;
+      state.links = newLinks;
+    },
+    deleteLink(state, action: PayloadAction<number>) {
+      const id = action.payload;
+      const newLinks = [...state.links];
+      newLinks.splice(id, 1);
       state.links = newLinks;
     },
   },
 });
 
-export const { updateData, updateLinks } = userData.actions;
+export const { updateData, updateLink, deleteLink } = userData.actions;
 export default userData.reducer;

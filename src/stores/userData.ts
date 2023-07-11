@@ -32,7 +32,7 @@ const initialState: userDataType = {
   title: "Title",
   email: "test@test.com",
   phoneNumber: "",
-  links: [],
+  links: [{ id: 0, websiteName: "", link: "" }],
   skills: "",
   experience: [],
   education: [],

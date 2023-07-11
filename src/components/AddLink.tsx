@@ -9,7 +9,6 @@ function AddLink() {
     e: React.ChangeEvent<HTMLInputElement>,
     id: number
   ) => {
-    console.log(myLinks[id].link);
     dispatch(
       updateLink({
         id: id,
@@ -23,7 +22,6 @@ function AddLink() {
     e: React.ChangeEvent<HTMLInputElement>,
     id: number
   ) => {
-    console.log(myLinks[id].websiteName);
     dispatch(
       updateLink({
         id: id,

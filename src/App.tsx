@@ -13,7 +13,6 @@ function App() {
   const { currentStep } = useSelector((state: any) => state.step);
   return (
     <div>
-    
       {currentStep === 0 ? (
         <>
           <h1>CV Maker</h1>
@@ -26,14 +25,20 @@ function App() {
       ) : currentStep === 3 ? (
         <UserInput title="Email" keyName="email" inputType="short" />
       ) : currentStep === 4 ? (
-        <UserInput title="Skills" keyName="skills" inputType="long" />
+        <UserInput
+          title="Phone Number"
+          keyName="phoneNumber"
+          inputType="short"
+        />
       ) : currentStep === 5 ? (
-        <AddLink />
+        <UserInput title="Skills" keyName="skills" inputType="long" />
       ) : currentStep === 6 ? (
-        <Experience />
+        <AddLink />
       ) : currentStep === 7 ? (
+        <Experience />
+      ) : currentStep === 8 ? (
         <Education />
-      ) :currentStep === 8 ? (
+      ) : currentStep === 9 ? (
         <MyDocument />
       ) : (
         <></>

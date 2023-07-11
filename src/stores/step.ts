@@ -7,7 +7,7 @@ interface pageType {
 
 const initialState: pageType = {
   currentStep: 0,
-  lastStep:8
+  lastStep:9
 };
 
 const step = createSlice({

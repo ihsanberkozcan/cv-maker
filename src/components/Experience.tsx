@@ -7,7 +7,8 @@ const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 function Experience() {
   return (
     <div>
-      Experience: Company Name:
+      <h2>Experience:</h2>
+      Company Name:
       <input type="text" />
       Job Title:
       <input type="text" />

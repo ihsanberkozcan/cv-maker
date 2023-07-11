@@ -38,7 +38,7 @@ const styles = StyleSheet.create({
 });
 
 export const MyDocument = () => {
-  const { name, email, title, links, skills } = useSelector(
+  const { name, email,phoneNumber, title, links, skills } = useSelector(
     (state: any) => state.userData
   );
   return (
@@ -50,6 +50,7 @@ export const MyDocument = () => {
             <Text style={styles.subtitle}>{title}</Text>
             <Text style={styles.text}>Ankara Türkiye</Text>
             <Text style={styles.text}>{email}</Text>
+            <Text style={styles.text}>{phoneNumber}</Text>
             <View style={styles.links}>
               {links.map((mylink: any, index: number) => (
                 <>

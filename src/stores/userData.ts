@@ -54,8 +54,6 @@ const userData = createSlice({
     updateLink(state, action: PayloadAction<linksType>) {
       const { id } = action.payload;
       const newLinks = [...state.links];
-      console.log(newLinks);
-      console.log(action.payload);
       newLinks[id] = action.payload;
       state.links = newLinks;
     },

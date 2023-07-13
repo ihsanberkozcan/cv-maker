@@ -1,4 +1,3 @@
-import React from "react";
 import { updateData, userDataType } from "../stores/userData";
 import { useDispatch } from "react-redux";
 

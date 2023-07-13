@@ -1,5 +1,3 @@
-import React from "react";
-
 const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
   console.log(e.target.value);
 };

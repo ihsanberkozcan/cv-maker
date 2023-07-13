@@ -52,14 +52,21 @@ function AddLink() {
       content.push(
         <li>
           <input
+            className="mt-3 rounded p-2 mr-3"
             onChange={(e) => handleWebsiteNameChange(e, i)}
             value={myLinks[i].websiteName}
           />
           <input
+            className="mt-3 rounded p-2 mr-3"
             onChange={(e) => handleLinkChange(e, i)}
             value={myLinks[i].link}
           />
-          <button onClick={() => deleteWebsiteLink(i)}>x</button>
+          <button
+            className="bg-indigo-300 rounded text-white p-2"
+            onClick={() => deleteWebsiteLink(i)}
+          >
+            x
+          </button>
         </li>
       );
     }
@@ -67,10 +74,10 @@ function AddLink() {
   };
 
   return (
-    <div>
-      Link:
-      {renderLink()}
-      <button onClick={() => addNewLink()}>Add New Link</button>
+    <div className="h-full overflow-auto">
+      <div className="text-4xl mb-3">Link:</div>
+      <ul className="list-none">{renderLink()}</ul>
+      <button className="bg-indigo-300 rounded text-white p-3 mt-5 w-full" onClick={() => addNewLink()}>Add New Link</button>
     </div>
   );
 }

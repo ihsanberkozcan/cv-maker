@@ -49,19 +49,19 @@ function AddLink() {
 
     for (let i = 0; i < myLinks.length; i++) {
       content.push(
-        <li>
+        <li className="flex">
           <input
-            className="mt-3 rounded p-2 mr-3"
+            className="rounded p-2 mr-3"
             onChange={(e) => handleWebsiteNameChange(e, i)}
             value={myLinks[i].websiteName}
           />
           <input
-            className="mt-3 rounded p-2 mr-3"
+            className="rounded p-2 mr-3"
             onChange={(e) => handleLinkChange(e, i)}
             value={myLinks[i].link}
           />
           <button
-            className="bg-indigo-300 rounded text-white p-2"
+            className="bg-indigo-300 rounded text-white mb-3 p-3"
             onClick={() => deleteWebsiteLink(i)}
           >
             x

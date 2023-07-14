@@ -6,3 +6,9 @@ iframe{
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+
+input{
+  @apply mb-3 w-full rounded p-2
+}

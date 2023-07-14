@@ -4,8 +4,8 @@ const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
 
 function Experience() {
   return (
-    <div>
-      <h2>Experience:</h2>
+    <div className="h-full overflow-auto">
+      <h2 className="text-4xl mb-3">Experience:</h2>
       Company Name:
       <input type="text" />
       Job Title:

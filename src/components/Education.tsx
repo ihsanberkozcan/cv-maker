@@ -1,7 +1,7 @@
 function Education() {
   return (
-    <div>
-      <h2>Education:</h2>
+    <div className="h-full overflow-auto">
+      <h2 className="text-4xl mb-3">Education:</h2>
       Institute Name:
       <input type="text" />
       Location:

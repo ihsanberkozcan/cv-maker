@@ -1,19 +1,20 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-interface linksType {
+export interface linksType {
   id: number;
   websiteName: string;
   link: string;
 }
 
-/* interface experienceType {
-  employer: string;
-  jobTitle: string;
-  startDate: string;
-  endDate: string;
-  location: string;
-  description: string;
-} */
+export interface experienceType {
+  id: number;
+  employer?: string;
+  jobTitle?: string;
+  startDate?: string;
+  endDate?: string;
+  location?: string;
+  description?: string;
+}
 
 export interface userDataType {
   fileName: string;
@@ -23,7 +24,7 @@ export interface userDataType {
   phoneNumber: string;
   links: Array<linksType>;
   skills: string;
-  experience: Array<object>;
+  experience: Array<experienceType>;
   education: Array<object>;
 }
 const initialState: userDataType = {
@@ -34,7 +35,17 @@ const initialState: userDataType = {
   phoneNumber: "",
   links: [{ id: 0, websiteName: "", link: "" }],
   skills: "",
-  experience: [],
+  experience: [
+    {
+      id: 0,
+      employer: "",
+      jobTitle: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      description: "",
+    },
+  ],
   education: [],
 };
 
@@ -63,8 +74,38 @@ const userData = createSlice({
       newLinks.splice(id, 1);
       state.links = newLinks;
     },
+    addExperience(state, action: PayloadAction<experienceType>) {
+      const { id } = action.payload;
+      const experience = [...state.experience];
+      experience[id] = action.payload;
+      state.experience = experience;
+    },
+    updateExperience(state, action: PayloadAction<experienceType>) {
+      const { id } = action.payload;
+      const experience = [...state.experience];
+      experience.map((obj: { [key: string]: string | number }) => {
+        if (obj.id === id) {
+          const secondKey = Object.keys(action.payload)[1];
+          obj[secondKey] = Object.values(action.payload)[1];
+        }
+      });
+      state.experience = experience;
+    },
+    deleteExperience(state, action: PayloadAction<number>) {
+      const id = action.payload;
+      const experience = [...state.experience];
+      experience.splice(id, 1);
+      state.experience = experience;
+    },
   },
 });
 
-export const { updateData, updateLink, deleteLink } = userData.actions;
+export const {
+  updateData,
+  updateLink,
+  deleteLink,
+  addExperience,
+  updateExperience,
+  deleteExperience,
+} = userData.actions;
 export default userData.reducer;

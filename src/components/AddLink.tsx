@@ -45,7 +45,7 @@ function AddLink() {
   };
 
   const renderLink = () => {
-    const content: any = [];
+    const content = [];
 
     for (let i = 0; i < myLinks.length; i++) {
       content.push(

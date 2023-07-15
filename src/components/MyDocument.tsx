@@ -7,6 +7,7 @@ import {
   PDFViewer,
 } from "@react-pdf/renderer";
 import { useSelector } from "react-redux";
+import { experienceType, linksType } from "../stores/userData";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -17,6 +18,12 @@ const styles = StyleSheet.create({
   },
   section: {
     marginBottom: 20,
+  },
+  subSection: {
+    flexDirection: "row",
+    marginBottom: 10,
+    justifyContent: "space-between",
+    width: "100%",
   },
   links: {
     flexDirection: "row",
@@ -31,16 +38,23 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     marginBottom: 5,
   },
+  header: {
+    fontSize: 15,
+  },
   text: {
     fontSize: 12,
     marginBottom: 5,
   },
+  dateAndLocation:
+{
+  flexDirection: "column",
+  alignItems: "flex-end"
+}
 });
 
 export const MyDocument = () => {
-  const { name, email,phoneNumber, title, links, skills } = useSelector(
-    (state: any) => state.userData
-  );
+  const { name, email, phoneNumber, title, links, skills, experience } =
+    useSelector((state: any) => state.userData);
   return (
     <PDFViewer>
       <Document>
@@ -52,11 +66,11 @@ export const MyDocument = () => {
             <Text style={styles.text}>{email}</Text>
             <Text style={styles.text}>{phoneNumber}</Text>
             <View style={styles.links}>
-              {links.map((mylink: any, index: number) => (
+              {links.map((mylink: linksType, index: number) => (
                 <>
                   <Text style={styles.text}>{mylink.websiteName}: </Text>
                   <Text style={styles.text}>{mylink.link}</Text>
-                  {index !== links.length-1 ? (
+                  {index !== links.length - 1 ? (
                     <Text style={styles.text}>{" | "} | </Text>
                   ) : (
                     <></>
@@ -72,18 +86,25 @@ export const MyDocument = () => {
           </View>
           <View style={styles.section}>
             <Text style={styles.subtitle}>Experience</Text>
-            <Text style={styles.text}>Developer, Acme Inc.</Text>
-            <Text style={styles.text}>2023 - Present</Text>
-            <Text style={styles.text}>
-              - 
-            </Text>
-          
+            {experience.map((myExperience: experienceType) => (
+              <div style={styles.subSection}>
+                <View>
+                  <Text style={styles.header}>{myExperience.employer}</Text>
+                  <Text style={styles.header}>{myExperience.jobTitle}</Text>
+                  <Text style={styles.text}>{myExperience.description}</Text>
+                </View>
+                <View style={styles.dateAndLocation}>
+                  <Text style={styles.text}>
+                    {myExperience.startDate} - {myExperience.endDate}
+                  </Text>
+                  <Text style={styles.text}>{myExperience.location}</Text>
+                </View>
+              </div>
+            ))}
           </View>
           <View style={styles.section}>
             <Text style={styles.subtitle}>Education</Text>
-            <Text style={styles.text}>
-              Bachelor of Science 
-            </Text>
+            <Text style={styles.text}>Bachelor of Science</Text>
             <Text style={styles.text}>2023</Text>
           </View>
         </Page>

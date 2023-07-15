@@ -7,7 +7,7 @@ import {
   PDFViewer,
 } from "@react-pdf/renderer";
 import { useSelector } from "react-redux";
-import { experienceType, linksType } from "../stores/userData";
+import { educationType, experienceType, linksType } from "../stores/userData";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -39,22 +39,29 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   header: {
-    fontSize: 15,
+    fontSize: 13,
   },
   text: {
     fontSize: 12,
     marginBottom: 5,
   },
-  dateAndLocation:
-{
-  flexDirection: "column",
-  alignItems: "flex-end"
-}
+  dateAndLocation: {
+    flexDirection: "column",
+    alignItems: "flex-end",
+  },
 });
 
 export const MyDocument = () => {
-  const { name, email, phoneNumber, title, links, skills, experience } =
-    useSelector((state: any) => state.userData);
+  const {
+    name,
+    email,
+    phoneNumber,
+    title,
+    links,
+    skills,
+    experience,
+    education,
+  } = useSelector((state: any) => state.userData);
   return (
     <PDFViewer>
       <Document>
@@ -84,9 +91,10 @@ export const MyDocument = () => {
             <Text style={styles.subtitle}>Skills</Text>
             <Text style={styles.text}>{skills}</Text>
           </View>
+
           <View style={styles.section}>
             <Text style={styles.subtitle}>Experience</Text>
-            {experience.map((myExperience: experienceType) => (
+            {experience?.map((myExperience: experienceType) => (
               <div style={styles.subSection}>
                 <View>
                   <Text style={styles.header}>{myExperience.employer}</Text>
@@ -102,10 +110,25 @@ export const MyDocument = () => {
               </div>
             ))}
           </View>
+
           <View style={styles.section}>
             <Text style={styles.subtitle}>Education</Text>
-            <Text style={styles.text}>Bachelor of Science</Text>
-            <Text style={styles.text}>2023</Text>
+            {education.map((myEducation: educationType) => (
+              <div style={styles.subSection}>
+                <View>
+                  <Text style={styles.header}>{myEducation.instituteName}</Text>
+                  <Text style={styles.header}>{myEducation.degreeType}</Text>
+                  <Text style={styles.text}>{myEducation.fieldOfStudy}</Text>
+                </View>
+                <View style={styles.dateAndLocation}>
+                  <Text style={styles.text}>
+                    {myEducation.startDate} - {myEducation.endDate}
+                  </Text>
+                  <Text style={styles.text}>{myEducation.scores}</Text>
+                  <Text style={styles.text}>{myEducation.location}</Text>
+                </View>
+              </div>
+            ))}
           </View>
         </Page>
       </Document>

@@ -15,6 +15,16 @@ export interface experienceType {
   location?: string;
   description?: string;
 }
+export interface educationType {
+  id: number;
+  instituteName?: string;
+  degreeType?: string;
+  fieldOfStudy?: string;
+  startDate?: string;
+  endDate?: string;
+  location?: string;
+  scores?: string;
+}
 
 export interface userDataType {
   fileName: string;
@@ -25,7 +35,7 @@ export interface userDataType {
   links: Array<linksType>;
   skills: string;
   experience: Array<experienceType>;
-  education: Array<object>;
+  education: Array<educationType>;
 }
 const initialState: userDataType = {
   fileName: "CV",
@@ -46,7 +56,18 @@ const initialState: userDataType = {
       description: "",
     },
   ],
-  education: [],
+  education: [
+    {
+      id: 0,
+      instituteName: "",
+      degreeType: "",
+      fieldOfStudy: "",
+      startDate: "",
+      endDate: "",
+      location: "",
+      scores: "",
+    },
+  ],
 };
 
 interface UpdateDataPayload {
@@ -97,6 +118,29 @@ const userData = createSlice({
       experience.splice(id, 1);
       state.experience = experience;
     },
+    addEduaction(state, action: PayloadAction<educationType>) {
+      const { id } = action.payload;
+      const education = [...state.education];
+      education[id] = action.payload;
+      state.education = education;
+    },
+    updateEducation(state, action: PayloadAction<educationType>) {
+      const { id } = action.payload;
+      const education = [...state.education];
+      education.map((obj: { [key: string]: string | number }) => {
+        if (obj.id === id) {
+          const secondKey = Object.keys(action.payload)[1];
+          obj[secondKey] = Object.values(action.payload)[1];
+        }
+      });
+      state.education = education;
+    },
+    deleteEduaction(state, action: PayloadAction<number>) {
+      const id = action.payload;
+      const education = [...state.education];
+      education.splice(id, 1);
+      state.education = education;
+    },
   },
 });
 
@@ -107,5 +151,8 @@ export const {
   addExperience,
   updateExperience,
   deleteExperience,
+  addEduaction,
+  updateEducation,
+  deleteEduaction,
 } = userData.actions;
 export default userData.reducer;

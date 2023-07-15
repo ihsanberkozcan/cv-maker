@@ -63,6 +63,7 @@ export const Content = ({
   phoneNumber,
   title,
   links,
+  location,
   skills,
   experience,
   education,
@@ -73,7 +74,7 @@ export const Content = ({
         <View style={styles.section}>
           <Text style={styles.title}>{name}</Text>
           <Text style={styles.subtitle}>{title}</Text>
-          <Text style={styles.text}>Ankara Türkiye</Text>
+          <Text style={styles.text}>{location}</Text>
           <Text style={styles.text}>{email}</Text>
           <Text style={styles.text}>{phoneNumber}</Text>
           <View style={styles.links}>
@@ -148,6 +149,7 @@ export const MyCV = () => {
     phoneNumber,
     title,
     links,
+    location,
     skills,
     experience,
     education,
@@ -168,6 +170,7 @@ export const MyCV = () => {
             phoneNumber={phoneNumber}
             title={title}
             links={links}
+            location={location}
             skills={skills}
             experience={experience}
             education={education}

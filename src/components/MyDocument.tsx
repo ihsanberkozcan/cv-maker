@@ -13,7 +13,7 @@ import { educationType, experienceType, linksType } from "../stores/userData";
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
-    backgroundColor: "#E4E4E4",
+    backgroundColor: "#ffffff",
     padding: 30,
   },
   section: {

@@ -15,8 +15,8 @@ function App() {
     switch (currentStep) {
       case 0:
         return (
-          <div className="flex flex-col justify-center items-center">
-            <h1 className="text-center mt-20 mb-10 text-6xl font-mono">
+          <div className="flex flex-col justify-center align-middle items-center w-full h-full">
+            <h1 className="text-center mb-10 text-6xl font-mono">
               CV Maker
             </h1>
             <StartButton />
@@ -79,9 +79,9 @@ function App() {
   };
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-indigo-300 via-purple-400 to-pink-300">
-      <div className="flex bg-indigo-50 w-3/4 h-3/5 drop-shadow-xl rounded-lg relative ">
+      <div className="flex bg-indigo-50 w-5/6 h-5/6 md:w-5/6 md:h-5/6  lg:w-3/4 lg:h-3/5 drop-shadow-xl rounded-lg relative ">
         {currentStep == 0 ? null : <BackButton />}
-        <div className="w-full p-12">{renderStep(currentStep)}</div>
+        <div className="w-full p-4 md:p-5 lg:p-20">{renderStep(currentStep)}</div>
         {currentStep !== lastStep && currentStep !== 0 ? <NextButton /> : <></>}
       </div>
     </div>

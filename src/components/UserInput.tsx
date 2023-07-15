@@ -20,7 +20,7 @@ function UserInput({ title, keyName, inputType, inputPlaceholder }: UserInputPro
   };
   return (
     <div>
-      <div className="text-4xl mb-3">{title}:</div>
+      <div className="text-2xl md:text-2xl lg:text-4xl mb-3">{title}:</div>
       {inputType === "short" ? (
         <input className="mt-3 w-full rounded p-2" placeholder={inputPlaceholder} onChange={(e) => handlechange(e, keyName)} />
       ) : (

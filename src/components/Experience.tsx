@@ -49,8 +49,8 @@ function Experience() {
     for (let i = 0; i < experience.length; i++) {
       content.push(
         <div>
-          <div className="flex justify-between">
-            <h2 className="text-4xl mb-3">{i + 1}. Experience:</h2>
+          <div className="flex justify-between mb-2">
+            <h2 className="text-2xl md:text-2xl lg:text-4xl">{i + 1}. Experience:</h2>
             <button
               className="text-red-200 p-3 mt-"
               onClick={() => removeExperience(i)}

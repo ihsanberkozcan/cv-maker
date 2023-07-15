@@ -8,7 +8,7 @@ function StartButton() {
   };
 
   return (
-    <button className="bg-indigo-300 rounded text-white p-5 mt-20" onClick={handleStartButton}>
+    <button className="bg-indigo-300 rounded text-white p-5 mt-20 w-2/3" onClick={handleStartButton}>
       Let's Start
     </button>
   );

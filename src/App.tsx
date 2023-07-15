@@ -1,4 +1,4 @@
-import { MyDocument } from "./components/MyDocument";
+import { MyCV } from "./components/MyCV";
 import UserInput from "./components/UserInput";
 import AddLink from "./components/AddLink";
 import Experience from "./components/Experience";
@@ -67,7 +67,7 @@ function App() {
         return <Education />;
         break;
       case 9:
-        return <MyDocument />;
+        return <MyCV />;
         break;
       case 10:
         <></>;
@@ -79,9 +79,9 @@ function App() {
   };
   return (
     <div className="flex flex-col justify-center items-center h-screen bg-gradient-to-r from-indigo-300 via-purple-400 to-pink-300">
-      <div className="flex bg-indigo-50 w-5/6 h-5/6 md:w-5/6 md:h-5/6  lg:w-3/4 lg:h-3/5 drop-shadow-xl rounded-lg relative ">
+      <div className="flex bg-indigo-50 w-5/6 h-5/6 md:w-5/6  lg:w-3/4  drop-shadow-xl rounded-lg relative ">
         {currentStep == 0 ? null : <BackButton />}
-        <div className="w-full p-4 md:p-5 lg:p-20">{renderStep(currentStep)}</div>
+        <div className="w-full p-4 md:p-5 lg:p-10">{renderStep(currentStep)}</div>
         {currentStep !== lastStep && currentStep !== 0 ? <NextButton /> : <></>}
       </div>
     </div>

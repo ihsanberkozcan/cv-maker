@@ -6,9 +6,10 @@ interface UserInputProps {
   keyName: keyof userDataType;
   inputType: string;
   inputPlaceholder?: string
+  inputValue: string
 }
 
-function UserInput({ title, keyName, inputType, inputPlaceholder }: UserInputProps) {
+function UserInput({ title, keyName, inputType, inputPlaceholder,inputValue }: UserInputProps) {
   const dispatch = useDispatch();
   const handlechange = (
     e:
@@ -22,9 +23,9 @@ function UserInput({ title, keyName, inputType, inputPlaceholder }: UserInputPro
     <div>
       <div className="text-2xl md:text-2xl lg:text-4xl mb-3">{title}:</div>
       {inputType === "short" ? (
-        <input className="mt-3 w-full rounded p-2" placeholder={inputPlaceholder} onChange={(e) => handlechange(e, keyName)} />
+        <input className="mt-3 w-full rounded p-2" placeholder={inputPlaceholder} value={inputValue} onChange={(e) => handlechange(e, keyName)} />
       ) : (
-        <textarea className="mt-3 w-full h-full rounded p-2" onChange={(e) => handlechange(e, keyName)} />
+        <textarea className="mt-3 w-full h-full rounded p-2" value={inputValue} onChange={(e) => handlechange(e, keyName)} />
       )}
     </div>
   );

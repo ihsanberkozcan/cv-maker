@@ -13,6 +13,7 @@ import {
   experienceType,
   linksType,
   updateData,
+  userDataType,
 } from "../stores/userData";
 
 // Create styles
@@ -67,7 +68,7 @@ export const Content = ({
   skills,
   experience,
   education,
-}: any) => {
+}: userDataType) => {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -173,8 +174,7 @@ export const MyCV = () => {
             location={location}
             skills={skills}
             experience={experience}
-            education={education}
-          />
+            education={education} fileName={""}          />
         </PDFViewer>
       </div>
       <DownloadLink
@@ -186,8 +186,7 @@ export const MyCV = () => {
         links={links}
         skills={skills}
         experience={experience}
-        education={education}
-      />
+        education={education} location={""}      />
     </div>
   );
 };
@@ -202,7 +201,7 @@ export const DownloadLink = ({
   skills,
   experience,
   education,
-}: any) => {
+}: userDataType) => {
   return (
     <PDFDownloadLink
     className="bg-indigo-300 rounded text-white mb-3 p-3 mt-3 w-full text-center"
@@ -215,8 +214,7 @@ export const DownloadLink = ({
           links={links}
           skills={skills}
           experience={experience}
-          education={education}
-        />
+          education={education} fileName={""} location={""}       />
       }
       fileName={`${fileName}.pdf`}
     >

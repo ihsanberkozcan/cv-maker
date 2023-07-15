@@ -27,21 +27,24 @@ export interface educationType {
 }
 
 export interface userDataType {
-  fileName: string;
+  fileName?: string;
   name: string;
   title: string;
   email: string;
+  location: string;
   phoneNumber: string;
   links: Array<linksType>;
   skills: string;
   experience: Array<experienceType>;
   education: Array<educationType>;
 }
+
 const initialState: userDataType = {
   fileName: "CV",
-  name: "Name Surname",
-  title: "Title",
-  email: "test@test.com",
+  name: "",
+  title: "",
+  email: "",
+  location: "",
   phoneNumber: "",
   links: [{ id: 0, websiteName: "", link: "" }],
   skills: "",

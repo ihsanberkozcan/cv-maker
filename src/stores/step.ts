@@ -7,7 +7,7 @@ interface pageType {
 
 const initialState: pageType = {
   currentStep: 0,
-  lastStep:9
+  lastStep: 10,
 };
 
 const step = createSlice({
@@ -18,10 +18,10 @@ const step = createSlice({
       state.currentStep = state.currentStep + 1;
     },
     backStep(state) {
-        state.currentStep = state.currentStep + -1;
+      state.currentStep = state.currentStep + -1;
     },
   },
 });
 
-export const {nextStep,backStep} = step.actions;
+export const { nextStep, backStep } = step.actions;
 export default step.reducer;

@@ -1,9 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { pageType } from "../types/type";
 
-interface pageType {
-  currentStep: number;
-  lastStep: number;
-}
+
 
 const initialState: pageType = {
   currentStep: 0,

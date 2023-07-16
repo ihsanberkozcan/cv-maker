@@ -8,13 +8,9 @@ import {
   PDFDownloadLink,
 } from "@react-pdf/renderer";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  educationType,
-  experienceType,
-  linksType,
-  updateData,
-  userDataType,
-} from "../stores/userData";
+import { educationType, experienceType, linksType, userDataType } from "../types/type";
+import { updateData } from "../stores/userData";
+
 
 // Create styles
 const styles = StyleSheet.create({

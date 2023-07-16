@@ -38,7 +38,7 @@ function AddLink() {
     dispatch(
       updateLink({
         id: myLinks.length,
-        websiteName: "GitHub",
+        websiteName: "",
         link: "",
       })
     );
@@ -50,14 +50,19 @@ function AddLink() {
     for (let i = 0; i < myLinks.length; i++) {
       content.push(
         <li className="flex">
-          <select className="rounded p-2 mr-3 mb-3" onChange={(e) => handleWebsiteNameChange(e, i)} value={myLinks[i].websiteName}>
+          <select
+            className="rounded p-2 mr-3 mb-3"
+            onChange={(e) => handleWebsiteNameChange(e, i)}
+            value={myLinks[i].websiteName}
+          >
+            <option value="">Please Select</option>
             <option value="GitHub">GitHub</option>
             <option value="GitLab">GitLab</option>
             <option value="LinkedIn">LinkedIn</option>
             <option value="Website">Website</option>
             <option value="Medium">Medium</option>
           </select>
-      
+
           <input
             className="rounded p-2 mr-2"
             onChange={(e) => handleLinkChange(e, i)}

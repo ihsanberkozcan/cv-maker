@@ -1,20 +1,17 @@
-import { updateData, userDataType } from "../stores/userData";
+import { updateData } from "../stores/userData";
 import { useDispatch } from "react-redux";
+import { UserInputProps, userDataType } from "../types/type";
 
-interface UserInputProps {
-  title: string;
-  keyName: keyof userDataType;
-  inputType: string;
-  inputPlaceholder?: string
-  inputValue: string
-}
-
-function UserInput({ title, keyName, inputType, inputPlaceholder,inputValue }: UserInputProps) {
+function UserInput({
+  title,
+  keyName,
+  inputType,
+  inputPlaceholder,
+  inputValue,
+}: UserInputProps) {
   const dispatch = useDispatch();
   const handlechange = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     keyName: keyof userDataType
   ) => {
     dispatch(updateData({ key: keyName, value: e.target.value }));
@@ -23,9 +20,18 @@ function UserInput({ title, keyName, inputType, inputPlaceholder,inputValue }: U
     <div>
       <div className="text-2xl md:text-2xl lg:text-4xl mb-3">{title}:</div>
       {inputType === "short" ? (
-        <input className="mt-3 w-full rounded p-2" placeholder={inputPlaceholder} value={inputValue} onChange={(e) => handlechange(e, keyName)} />
+        <input
+          className="mt-3 w-full rounded p-2"
+          placeholder={inputPlaceholder}
+          value={inputValue}
+          onChange={(e) => handlechange(e, keyName)}
+        />
       ) : (
-        <textarea className="mt-3 w-full h-full rounded p-2" value={inputValue} onChange={(e) => handlechange(e, keyName)} />
+        <textarea
+          className="mt-3 w-full h-full rounded p-2"
+          value={inputValue}
+          onChange={(e) => handlechange(e, keyName)}
+        />
       )}
     </div>
   );

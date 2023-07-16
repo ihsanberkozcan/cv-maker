@@ -80,10 +80,11 @@ function Education() {
           />
           Degree Type:
           <select
-            className="rounded p-2 mr-3 mb-3 w-full"
+            className="rounded p-2 mb-3 w-full"
             onChange={(e) => handleUpdateEducation(e, i, "degreeType")}
             value={education[i].degreeType}
           >
+            <option value="">Please Select</option>
             <option value="Associate's Degree">Associate's Degree</option>
             <option value="Bachelor's Degree">Bachelor's Degree</option>
             <option value="Master's Degree">Master's Degree</option>

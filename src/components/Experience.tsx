@@ -25,9 +25,7 @@ function Experience() {
   };
 
   const handleUpdateExperience = (
-    e:
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     id: number,
     update: string
   ) => {
@@ -50,7 +48,9 @@ function Experience() {
       content.push(
         <div>
           <div className="flex justify-between mb-2">
-            <h2 className="text-2xl md:text-2xl lg:text-4xl">{i + 1}. Experience:</h2>
+            <h2 className="text-2xl md:text-2xl lg:text-4xl">
+              {i + 1}. Experience:
+            </h2>
             <button
               className="text-red-200 p-3 mt-"
               onClick={() => removeExperience(i)}

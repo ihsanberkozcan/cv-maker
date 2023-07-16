@@ -1,43 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { educationType, experienceType, linksType, UpdateDataPayload, userDataType } from "../types/type";
 
-export interface linksType {
-  id: number;
-  websiteName: string;
-  link: string;
-}
-
-export interface experienceType {
-  id: number;
-  employer?: string;
-  jobTitle?: string;
-  startDate?: string;
-  endDate?: string;
-  location?: string;
-  description?: string;
-}
-export interface educationType {
-  id: number;
-  instituteName?: string;
-  degreeType?: string;
-  fieldOfStudy?: string;
-  startDate?: string;
-  endDate?: string;
-  location?: string;
-  scores?: string;
-}
-
-export interface userDataType {
-  fileName?: string;
-  name: string;
-  title: string;
-  email: string;
-  location: string;
-  phoneNumber: string;
-  links: Array<linksType>;
-  skills: string;
-  experience: Array<experienceType>;
-  education: Array<educationType>;
-}
 
 const initialState: userDataType = {
   fileName: "CV",
@@ -46,7 +9,7 @@ const initialState: userDataType = {
   email: "",
   location: "",
   phoneNumber: "",
-  links: [{ id: 0, websiteName: "GitHub", link: "" }],
+  links: [{ id: 0, websiteName: "", link: "" }],
   skills: "",
   experience: [
     {
@@ -73,10 +36,6 @@ const initialState: userDataType = {
   ],
 };
 
-interface UpdateDataPayload {
-  key: keyof userDataType;
-  value: any;
-}
 
 const userData = createSlice({
   name: "userData",

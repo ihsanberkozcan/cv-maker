@@ -23,8 +23,17 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffffff",
     padding: 30,
   },
+  cvHeader: {
+    width: "100%",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  cvSubPart:{
+    flexDirection: "row",
+  },
   section: {
-    marginBottom: 20,
+    marginBottom: 5,
   },
   subSection: {
     flexDirection: "row",
@@ -35,10 +44,15 @@ const styles = StyleSheet.create({
   links: {
     flexDirection: "row",
   },
+  jobTitle:{
+    fontSize: 18,
+    fontWeight: "bold",
+    marginBottom: 10,
+  },
   title: {
     fontSize: 24,
     fontWeight: "bold",
-    marginBottom: 10,
+    marginBottom: 5,
   },
   subtitle: {
     fontSize: 18,
@@ -56,6 +70,12 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     alignItems: "flex-end",
   },
+  line: {
+    marginBottom: 10,
+    marginTop: 10,
+    height: 1,
+    backgroundColor: "black",
+  },
 });
 
 export const Content = ({
@@ -72,16 +92,19 @@ export const Content = ({
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        <View style={styles.section}>
+        <View style={styles.cvHeader}>
           <Text style={styles.title}>{name}</Text>
-          <Text style={styles.subtitle}>{title}</Text>
-          <Text style={styles.text}>{location}</Text>
-          <Text style={styles.text}>{email}</Text>
-          <Text style={styles.text}>{phoneNumber}</Text>
+          <Text style={styles.jobTitle}>{title}</Text>
+          <View style={styles.cvSubPart}>
+            <Text style={styles.text}>{email}</Text>
+            <Text style={styles.text}>&nbsp;|&nbsp;</Text>
+            <Text style={styles.text}>{phoneNumber}</Text>
+            <Text style={styles.text}>&nbsp;|&nbsp;</Text>
+            <Text style={styles.text}>{location}</Text>
+          </View>
           <View style={styles.links}>
             {links.map((mylink: linksType, index: number) => (
               <>
-           
                 <Text style={styles.text}>{mylink.websiteName} :&nbsp;</Text>
                 <Text style={styles.text}>{mylink.link}</Text>
 
@@ -94,12 +117,12 @@ export const Content = ({
             ))}
           </View>
         </View>
-
+        <View style={styles.line} />
         <View style={styles.section}>
           <Text style={styles.subtitle}>Skills</Text>
           <Text style={styles.text}>{skills}</Text>
         </View>
-
+        <View style={styles.line} />
         <View style={styles.section}>
           <Text style={styles.subtitle}>Experience</Text>
           {experience?.map((myExperience: experienceType) => (
@@ -118,7 +141,7 @@ export const Content = ({
             </View>
           ))}
         </View>
-
+        <View style={styles.line} />
         <View style={styles.section}>
           <Text style={styles.subtitle}>Education</Text>
           {education.map((myEducation: educationType) => (
@@ -191,7 +214,7 @@ export const MyCV = () => {
         skills={skills}
         experience={experience}
         education={education}
-        location={""}
+        location={location}
       />
     </div>
   );
@@ -207,6 +230,7 @@ export const DownloadLink = ({
   skills,
   experience,
   education,
+  location
 }: userDataType) => {
   return (
     <PDFDownloadLink
@@ -221,8 +245,7 @@ export const DownloadLink = ({
           skills={skills}
           experience={experience}
           education={education}
-          fileName={""}
-          location={""}
+          location={location}
         />
       }
       fileName={`${fileName}.pdf`}

@@ -26,14 +26,14 @@ function Education() {
   };
 
   const handleUpdateEducation = (
-    e: React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
     id: number,
     update: string
   ) => {
     dispatch(
       updateEducation({
         id: id,
-        [update]: e.target.value
+        [update]: e.target.value,
       })
     );
   };
@@ -49,7 +49,9 @@ function Education() {
       content.push(
         <div>
           <div className="flex justify-between mb-2">
-            <h2 className="text-2xl md:text-2xl lg:text-4xl">{i+1}. Education:</h2>
+            <h2 className="text-2xl md:text-2xl lg:text-4xl">
+              {i + 1}. Education:
+            </h2>
             <button
               className="text-red-200 p-3 mt-"
               onClick={() => removeEducation(i)}
@@ -74,14 +76,21 @@ function Education() {
           <input
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "instituteName")}
-            value={education[i].instituteName}                                                              
+            value={education[i].instituteName}
           />
           Degree Type:
-          <input
-            type="text"
+          <select
+            className="rounded p-2 mr-3 mb-3 w-full"
             onChange={(e) => handleUpdateEducation(e, i, "degreeType")}
             value={education[i].degreeType}
-          />
+          >
+            <option value="Associate's Degree">Associate's Degree</option>
+            <option value="Bachelor's Degree">Bachelor's Degree</option>
+            <option value="Master's Degree">Master's Degree</option>
+            <option value="Doctorate (Ph.D.) Degree">
+              Doctorate (Ph.D.) Degree
+            </option>
+          </select>
           Field of Study:
           <input
             type="text"

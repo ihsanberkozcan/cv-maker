@@ -46,7 +46,7 @@ const initialState: userDataType = {
   email: "",
   location: "",
   phoneNumber: "",
-  links: [{ id: 0, websiteName: "", link: "" }],
+  links: [{ id: 0, websiteName: "GitHub", link: "" }],
   skills: "",
   experience: [
     {

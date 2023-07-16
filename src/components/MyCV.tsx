@@ -81,10 +81,12 @@ export const Content = ({
           <View style={styles.links}>
             {links.map((mylink: linksType, index: number) => (
               <>
-                <Text style={styles.text}>{mylink.websiteName}: </Text>
+           
+                <Text style={styles.text}>{mylink.websiteName} :&nbsp;</Text>
                 <Text style={styles.text}>{mylink.link}</Text>
+
                 {index !== links.length - 1 ? (
-                  <Text style={styles.text}>{" | "} | </Text>
+                  <Text style={styles.text}>&nbsp;|&nbsp;</Text>
                 ) : (
                   <></>
                 )}
@@ -174,7 +176,9 @@ export const MyCV = () => {
             location={location}
             skills={skills}
             experience={experience}
-            education={education} fileName={""}          />
+            education={education}
+            fileName={""}
+          />
         </PDFViewer>
       </div>
       <DownloadLink
@@ -186,7 +190,9 @@ export const MyCV = () => {
         links={links}
         skills={skills}
         experience={experience}
-        education={education} location={""}      />
+        education={education}
+        location={""}
+      />
     </div>
   );
 };
@@ -204,7 +210,7 @@ export const DownloadLink = ({
 }: userDataType) => {
   return (
     <PDFDownloadLink
-    className="bg-indigo-300 rounded text-white mb-3 p-3 mt-3 w-full text-center"
+      className="bg-indigo-300 rounded text-white mb-3 p-3 mt-3 w-full text-center"
       document={
         <Content
           name={name}
@@ -214,13 +220,14 @@ export const DownloadLink = ({
           links={links}
           skills={skills}
           experience={experience}
-          education={education} fileName={""} location={""}       />
+          education={education}
+          fileName={""}
+          location={""}
+        />
       }
       fileName={`${fileName}.pdf`}
     >
-      {({ loading }) =>
-        loading ? "Loading document..." : "Download"
-      }
+      {({ loading }) => (loading ? "Loading document..." : "Download")}
     </PDFDownloadLink>
   );
 };

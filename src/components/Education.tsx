@@ -4,6 +4,9 @@ import {
   updateEducation,
   deleteEduaction,
 } from "../stores/userData";
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 function Education() {
   const dispatch = useDispatch();
@@ -18,8 +21,8 @@ function Education() {
         location: "",
         degreeType: "",
         fieldOfStudy: "",
-        startDate: "",
-        endDate: "",
+        startDate: new Date(),
+        endDate: new Date(),
         scores: "",
       })
     );
@@ -34,6 +37,18 @@ function Education() {
       updateEducation({
         id: id,
         [update]: e.target.value,
+      })
+    );
+  };
+  const handleUpdateEducationDate = (
+    date: Date,
+    id: number,
+    update: string
+  ) => {
+    dispatch(
+      updateEducation({
+        id: id,
+        [update]: date,
       })
     );
   };
@@ -98,19 +113,27 @@ function Education() {
             onChange={(e) => handleUpdateEducation(e, i, "fieldOfStudy")}
             value={education[i].fieldOfStudy}
           />
-          Start Date:
-          <input
-            type="text"
-            onChange={(e) => handleUpdateEducation(e, i, "startDate")}
-            value={education[i].startDate}
+          <div className="w-full">Start Date:</div>
+          <DatePicker
+            wrapperClassName="w-full"
+            selected={education[i].startDate}
+            onChange={(date: Date) =>
+              handleUpdateEducationDate(date, i, "startDate")
+            }
+            showMonthYearPicker
+            dateFormat="MMM yyyy"
           />
-          End Date:
-          <input
-            type="text"
-            onChange={(e) => handleUpdateEducation(e, i, "endDate")}
-            value={education[i].endDate}
+          <div className="w-full">End Date:</div>
+          <DatePicker
+            wrapperClassName="w-full"
+            selected={education[i].endDate}
+            onChange={(date: Date) =>
+              handleUpdateEducationDate(date, i, "endDate")
+            }
+            showMonthYearPicker
+            dateFormat="MMM yyyy"
           />
-          Location:
+          <div className="w-full">Location:</div>
           <input
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "location")}

@@ -155,7 +155,8 @@ export const Content = ({
               </View>
               <View style={styles.dateAndLocation}>
                 <Text style={styles.text}>
-                  {myEducation.startDate} - {myEducation.endDate}
+                  {formatDate(myEducation.startDate)} -&nbsp;
+                  {formatDate(myEducation.endDate)}
                 </Text>
                 <Text style={styles.text}>{myEducation.scores}</Text>
                 <Text style={styles.text}>{myEducation.location}</Text>

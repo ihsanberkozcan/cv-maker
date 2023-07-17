@@ -18,8 +18,8 @@ export interface educationType {
   instituteName?: string;
   degreeType?: string;
   fieldOfStudy?: string;
-  startDate?: string;
-  endDate?: string;
+  startDate?: Date;
+  endDate?: Date;
   location?: string;
   scores?: string;
 }

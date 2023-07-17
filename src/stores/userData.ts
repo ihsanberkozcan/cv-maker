@@ -1,6 +1,11 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { educationType, experienceType, linksType, UpdateDataPayload, userDataType } from "../types/type";
-
+import {
+  educationType,
+  experienceType,
+  linksType,
+  UpdateDataPayload,
+  userDataType,
+} from "../types/type";
 
 const initialState: userDataType = {
   fileName: "CV",
@@ -28,14 +33,13 @@ const initialState: userDataType = {
       instituteName: "",
       degreeType: "",
       fieldOfStudy: "",
-      startDate: "",
-      endDate: "",
+      startDate: new Date(),
+      endDate: new Date(),
       location: "",
       scores: "",
     },
   ],
 };
-
 
 const userData = createSlice({
   name: "userData",
@@ -89,7 +93,7 @@ const userData = createSlice({
     updateEducation(state, action: PayloadAction<educationType>) {
       const { id } = action.payload;
       const education = [...state.education];
-      education.map((obj: { [key: string]: string | number }) => {
+      education.map((obj: { [key: string]: string | number | Date }) => {
         if (obj.id === id) {
           const secondKey = Object.keys(action.payload)[1];
           obj[secondKey] = Object.values(action.payload)[1];

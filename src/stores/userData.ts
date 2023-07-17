@@ -16,8 +16,8 @@ const initialState: userDataType = {
       id: 0,
       employer: "",
       jobTitle: "",
-      startDate: "",
-      endDate: "",
+      startDate: new Date(),
+      endDate: new Date(),
       location: "",
       description: "",
     },
@@ -66,7 +66,7 @@ const userData = createSlice({
     updateExperience(state, action: PayloadAction<experienceType>) {
       const { id } = action.payload;
       const experience = [...state.experience];
-      experience.map((obj: { [key: string]: string | number }) => {
+      experience.map((obj: { [key: string]: string | number | Date }) => {
         if (obj.id === id) {
           const secondKey = Object.keys(action.payload)[1];
           obj[secondKey] = Object.values(action.payload)[1];

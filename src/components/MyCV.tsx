@@ -8,9 +8,14 @@ import {
   PDFDownloadLink,
 } from "@react-pdf/renderer";
 import { useDispatch, useSelector } from "react-redux";
-import { educationType, experienceType, linksType, userDataType } from "../types/type";
+import {
+  educationType,
+  experienceType,
+  linksType,
+  userDataType,
+} from "../types/type";
 import { updateData } from "../stores/userData";
-
+import { formatDate } from "../utils/formatDate";
 
 // Create styles
 const styles = StyleSheet.create({
@@ -25,7 +30,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  cvSubPart:{
+  cvSubPart: {
     flexDirection: "row",
   },
   section: {
@@ -40,7 +45,7 @@ const styles = StyleSheet.create({
   links: {
     flexDirection: "row",
   },
-  jobTitle:{
+  jobTitle: {
     fontSize: 18,
     fontWeight: "bold",
     marginBottom: 10,
@@ -130,7 +135,8 @@ export const Content = ({
               </View>
               <View style={styles.dateAndLocation}>
                 <Text style={styles.text}>
-                  {myExperience.startDate} - {myExperience.endDate}
+                  {formatDate(myExperience.startDate)} -&nbsp;
+                  {formatDate(myExperience.endDate)}
                 </Text>
                 <Text style={styles.text}>{myExperience.location}</Text>
               </View>
@@ -226,7 +232,7 @@ export const DownloadLink = ({
   skills,
   experience,
   education,
-  location
+  location,
 }: userDataType) => {
   return (
     <PDFDownloadLink

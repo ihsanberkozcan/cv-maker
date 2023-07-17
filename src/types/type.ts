@@ -8,8 +8,8 @@ export interface experienceType {
   id: number;
   employer?: string;
   jobTitle?: string;
-  startDate?: string;
-  endDate?: string;
+  startDate?: Date;
+  endDate?: Date;
   location?: string;
   description?: string;
 }
@@ -56,3 +56,8 @@ export interface UserInputProps {
     inputValue: string
   }
   
+  export interface dateOptionsType{
+    year?: "numeric" | "2-digit";
+    month?: "numeric" | "2-digit" | "long" | "short" | "narrow";
+    day?: "numeric" | "2-digit";
+  }

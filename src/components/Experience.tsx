@@ -1,9 +1,15 @@
 import { useDispatch, useSelector } from "react-redux";
+
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
+
 import {
   addExperience,
   deleteExperience,
   updateExperience,
 } from "../stores/userData";
+
 
 function Experience() {
   const dispatch = useDispatch();
@@ -16,8 +22,8 @@ function Experience() {
         id: experience.length,
         employer: "",
         jobTitle: "",
-        startDate: "",
-        endDate: "",
+        startDate: new Date(),
+        endDate: new Date(),
         location: "",
         description: "",
       })
@@ -33,6 +39,18 @@ function Experience() {
       updateExperience({
         id: id,
         [update]: e.target.value,
+      })
+    );
+  };
+  const handleUpdateExperienceDate = (
+    date: Date,
+    id: number,
+    update: string
+  ) => {
+    dispatch(
+      updateExperience({
+        id: id,
+        [update]: date,
       })
     );
   };
@@ -83,19 +101,27 @@ function Experience() {
             onChange={(e) => handleUpdateExperience(e, i, "jobTitle")}
             value={experience[i].jobTitle}
           />
-          Start Date:
-          <input
-            type="text"
-            onChange={(e) => handleUpdateExperience(e, i, "startDate")}
-            value={experience[i].startDate}
+          <div className="w-full">Start Date:</div>
+          <DatePicker
+            wrapperClassName="w-full"
+            selected={experience[i].startDate}
+            onChange={(date: Date) =>
+              handleUpdateExperienceDate(date, i, "startDate")
+            }
+            showMonthYearPicker
+            dateFormat="MMM yyyy"
           />
-          End Date:
-          <input
-            type="text"
-            onChange={(e) => handleUpdateExperience(e, i, "endDate")}
-            value={experience[i].endDate}
+          <div className="w-full">End Date:</div>
+          <DatePicker
+            wrapperClassName="w-full"
+            selected={experience[i].endDate}
+            onChange={(date: Date) =>
+              handleUpdateExperienceDate(date, i, "endDate")
+            }
+            showMonthYearPicker
+            dateFormat="MMM yyyy"
           />
-          Location:
+          <div className="w-full">Location:</div>
           <input
             type="text"
             onChange={(e) => handleUpdateExperience(e, i, "location")}

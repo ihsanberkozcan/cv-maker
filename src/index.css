@@ -10,9 +10,9 @@ iframe{
 
 
 input{
-  @apply mb-3 w-full rounded p-2
+  @apply mb-3 w-full rounded p-2 border-2
 }
 
 textarea{
-  @apply mb-3 w-full rounded p-2
+  @apply mb-3 w-full rounded p-2 border-2
 }

@@ -8,7 +8,7 @@ function NextButton() {
   };
 
   return (
-    <button className="text-white p-1 md:p-1 lg:p-4 h-full bg-indigo-300 rounded-r-lg" onClick={handleNextButton}>
+    <button className="text-white p-4 h-full bg-indigo-300 rounded-lg" onClick={handleNextButton}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

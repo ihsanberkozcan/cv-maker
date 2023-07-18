@@ -6,7 +6,10 @@ import {
   StyleSheet,
   PDFViewer,
   PDFDownloadLink,
+  Font,
 } from "@react-pdf/renderer";
+
+import OpenSans from "../fonts/OpenSans-Regular.ttf";
 import { useDispatch, useSelector } from "react-redux";
 import {
   educationType,
@@ -17,12 +20,12 @@ import {
 import { updateData } from "../stores/userData";
 import { formatDate } from "../utils/formatDate";
 
-// Create styles
 const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
     backgroundColor: "#ffffff",
     padding: 30,
+    fontFamily: "Open Sans",
   },
   cvHeader: {
     width: "100%",
@@ -90,6 +93,12 @@ export const Content = ({
   experience,
   education,
 }: userDataType) => {
+  Font.register({
+    family: "Open Sans",
+    src: OpenSans,
+    fontWeight: "normal",
+    fontStyle: "normal",
+  });
   return (
     <Document>
       <Page size="A4" style={styles.page}>

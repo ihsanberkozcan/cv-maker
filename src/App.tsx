@@ -23,7 +23,6 @@ function App() {
             <StartButton />
           </div>
         );
-        break;
       case 1:
         return (
           <UserInput
@@ -33,7 +32,6 @@ function App() {
             inputValue={name}
           />
         );
-        break;
       case 2:
         return (
           <UserInput
@@ -43,7 +41,6 @@ function App() {
             inputValue={title}
           />
         );
-        break;
       case 3:
         return (
           <UserInput
@@ -53,7 +50,6 @@ function App() {
             inputValue={location}
           />
         );
-        break;
       case 4:
         return (
           <UserInput
@@ -64,7 +60,6 @@ function App() {
             inputValue={email}
           />
         );
-        break;
       case 5:
         return (
           <UserInput
@@ -75,7 +70,6 @@ function App() {
             inputValue={phoneNumber}
           />
         );
-        break;
       case 6:
         return (
           <UserInput
@@ -85,23 +79,18 @@ function App() {
             inputValue={skills}
           />
         );
-        break;
 
       case 7:
         return <AddLink />;
-        break;
+
       case 8:
         return <Experience />;
-        break;
+
       case 9:
         return <Education />;
-        break;
+
       case 10:
         return <MyCV />;
-        break;
-      case 11:
-        <></>;
-        break;
 
       default:
         break;
@@ -109,10 +98,12 @@ function App() {
   };
   return (
     <div className="flex flex-col h-screen relative">
-      <div className={`w-full h-full p-4 md:p-5 lg:p-10 bg-[#F9F7F7] ${currentStep !==0 ?"mt-20":""}`}>
-     
+      <div
+        className={`w-full h-full p-4 md:p-5 lg:p-10 bg-[#F9F7F7] ${
+          currentStep !== 0 ? "mt-20" : ""
+        }`}
+      >
         {renderStep(currentStep)}
-
       </div>
       {currentStep !== 0 ? (
         <div className="w-full flex justify-between px-4 md:px-5 lg:px-10 py-3 fixed top-0 items-center bg-white drop-shadow-md">

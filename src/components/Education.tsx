@@ -152,10 +152,10 @@ function Education() {
   };
 
   return (
-    <div className="h-full overflow-auto">
-      {renderEducation()}
+    <div>
+      <>{renderEducation()}</>
       <button
-        className="bg-indigo-300 rounded text-white p-3 mt-5 w-full"
+        className="bg-indigo-300 rounded text-white p-3 mt-5 mb-5 w-full"
         onClick={() => addNewEducation()}
       >
         Add New Education

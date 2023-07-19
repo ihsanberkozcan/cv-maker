@@ -198,7 +198,7 @@ export const MyCV = () => {
   };
   return (
     <div className="h-full flex flex-col">
-      <h2>File Name:</h2>
+      <h2 className="text-2xl md:text-2xl lg:text-4xl">File Name:</h2>
       <input type="text" onChange={handleFileName} />
       <div className="h-full">
         <PDFViewer>

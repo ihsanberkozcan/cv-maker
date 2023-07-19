@@ -10,7 +10,6 @@ import {
   updateExperience,
 } from "../stores/userData";
 
-
 function Experience() {
   const dispatch = useDispatch();
 
@@ -139,11 +138,11 @@ function Experience() {
   };
 
   return (
-    <div className="h-full overflow-auto">
+    <div>
       {renderExperience()}
 
       <button
-        className="bg-indigo-300 rounded text-white p-3 mt-5 w-full"
+        className="bg-indigo-300 rounded text-white p-3 mt-5 mb-5 w-full"
         onClick={() => addNewExperience()}
       >
         Add New Experience

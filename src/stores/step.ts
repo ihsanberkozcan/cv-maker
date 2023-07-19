@@ -5,7 +5,7 @@ import { pageType } from "../types/type";
 
 const initialState: pageType = {
   currentStep: 0,
-  lastStep: 10,
+  lastStep: 13,
 };
 
 const step = createSlice({

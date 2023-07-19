@@ -12,9 +12,12 @@ import {
 import OpenSans from "../fonts/OpenSans-Regular.ttf";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  awardType,
+  certificationType,
   educationType,
   experienceType,
   linksType,
+  projectType,
   userDataType,
 } from "../types/type";
 import { updateData } from "../stores/userData";
@@ -80,6 +83,9 @@ const styles = StyleSheet.create({
     height: 1,
     backgroundColor: "black",
   },
+  description: {
+    fontSize: 12,
+  },
 });
 
 export const Content = ({
@@ -92,6 +98,9 @@ export const Content = ({
   skills,
   experience,
   education,
+  project,
+  certification,
+  award,
 }: userDataType) => {
   Font.register({
     family: "Open Sans",
@@ -173,6 +182,52 @@ export const Content = ({
             </View>
           ))}
         </View>
+        <View style={styles.line} />
+        <View style={styles.section}>
+          <Text style={styles.subtitle}>Projects</Text>
+          {project.map((myProject: projectType) => (
+            <View style={styles.subSection}>
+              <View>
+                <Text style={styles.header}>{myProject.projectTitle}</Text>
+                <Text style={styles.header}>{myProject.projectLink}</Text>
+                <Text style={styles.description}>
+                  {myProject.projectDescription}
+                </Text>
+              </View>
+            </View>
+          ))}
+        </View>
+        <View style={styles.line} />
+        <View style={styles.section}>
+          <Text style={styles.subtitle}>Certifications</Text>
+          {certification.map((myCertification: certificationType) => (
+            <View style={styles.subSection}>
+              <View>
+                <Text style={styles.header}>
+                  {myCertification.certificateTitle}
+                </Text>
+                <Text style={styles.header}>{myCertification.IssuedBy}</Text>
+                <Text style={styles.header}>
+                  {myCertification.certificateLink}
+                </Text>
+              </View>
+            </View>
+          ))}
+        </View>
+        <View style={styles.line} />
+        <View style={styles.section}>
+          <Text style={styles.subtitle}>Awards</Text>
+          {award.map((myAward: awardType) => (
+            <View style={styles.subSection}>
+              <View>
+                <Text style={styles.header}>{myAward.awardTitle}</Text>
+                <Text style={styles.description}>
+                  {myAward.awardDescription}
+                </Text>
+              </View>
+            </View>
+          ))}
+        </View>
       </Page>
     </Document>
   );
@@ -191,6 +246,9 @@ export const MyCV = () => {
     skills,
     experience,
     education,
+    project,
+    award,
+    certification,
   } = useSelector((state: any) => state.userData);
 
   const handleFileName = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -213,6 +271,9 @@ export const MyCV = () => {
             experience={experience}
             education={education}
             fileName={""}
+            project={project}
+            certification={certification}
+            award={award}
           />
         </PDFViewer>
       </div>
@@ -227,6 +288,9 @@ export const MyCV = () => {
         experience={experience}
         education={education}
         location={location}
+        project={project}
+        certification={certification}
+        award={award}
       />
     </div>
   );
@@ -243,6 +307,9 @@ export const DownloadLink = ({
   experience,
   education,
   location,
+  project,
+  certification,
+  award,
 }: userDataType) => {
   return (
     <PDFDownloadLink
@@ -258,6 +325,9 @@ export const DownloadLink = ({
           experience={experience}
           education={education}
           location={location}
+          project={project}
+          certification={certification}
+          award={award}
         />
       }
       fileName={`${fileName}.pdf`}

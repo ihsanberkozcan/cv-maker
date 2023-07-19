@@ -24,6 +24,26 @@ export interface educationType {
   scores?: string;
 }
 
+export interface projectType {
+  id: number;
+  projectTitle?: string;
+  projectLink?: string;
+  projectDescription?: string;
+}
+
+export interface certificationType {
+  id: number;
+  certificateTitle?: string;
+  certificateLink?: string;
+  IssuedBy?: string;
+}
+
+export interface awardType {
+  id: number;
+  awardTitle?: string;
+  awardDescription?: string;
+}
+
 export interface userDataType {
   fileName?: string;
   name: string;
@@ -35,6 +55,9 @@ export interface userDataType {
   skills: string;
   experience: Array<experienceType>;
   education: Array<educationType>;
+  project: Array<projectType>;
+  certification: Array<certificationType>;
+  award: Array<awardType>;
 }
 
 export interface UpdateDataPayload {
@@ -47,17 +70,16 @@ export interface pageType {
   lastStep: number;
 }
 
-
 export interface UserInputProps {
-    title: string;
-    keyName: keyof userDataType;
-    inputType: string;
-    inputPlaceholder?: string
-    inputValue: string
-  }
-  
-  export interface dateOptionsType{
-    year?: "numeric" | "2-digit";
-    month?: "numeric" | "2-digit" | "long" | "short" | "narrow";
-    day?: "numeric" | "2-digit";
-  }
+  title: string;
+  keyName: keyof userDataType;
+  inputType: string;
+  inputPlaceholder?: string;
+  inputValue: string;
+}
+
+export interface dateOptionsType {
+  year?: "numeric" | "2-digit";
+  month?: "numeric" | "2-digit" | "long" | "short" | "narrow";
+  day?: "numeric" | "2-digit";
+}

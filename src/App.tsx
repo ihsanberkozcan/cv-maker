@@ -7,6 +7,9 @@ import BackButton from "./components/BackButton";
 import { useSelector } from "react-redux";
 import StartButton from "./components/StartButton";
 import Education from "./components/Education";
+import Project from "./components/Project";
+import Certification from "./components/Certification";
+import Award from "./components/Award";
 
 function App() {
   const { currentStep, lastStep } = useSelector((state: any) => state.step);
@@ -79,19 +82,20 @@ function App() {
             inputValue={skills}
           />
         );
-
       case 7:
         return <AddLink />;
-
       case 8:
         return <Experience />;
-
       case 9:
         return <Education />;
-
       case 10:
+        return <Project />;
+      case 11:
+        return <Certification />;
+      case 12:
+        return <Award />;
+      case 13:
         return <MyCV />;
-
       default:
         break;
     }

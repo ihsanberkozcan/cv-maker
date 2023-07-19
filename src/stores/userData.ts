@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import {
+  awardType,
   educationType,
   experienceType,
   linksType,
@@ -39,7 +40,44 @@ const initialState: userDataType = {
       scores: "",
     },
   ],
+  project: [
+    {
+      id: 0,
+      projectTitle: "",
+      projectLink: "",
+      projectDescription: "",
+    },
+  ],
+  certification: [
+    {
+      id: 0,
+      certificateTitle: "",
+      certificateLink: "",
+      IssuedBy: "",
+    },
+  ],
+  award: [
+    {
+      id: 0,
+      awardTitle: "",
+      awardDescription: "",
+    },
+  ],
 };
+
+export interface projectType {
+  id: number;
+  projectTitle?: string;
+  projectLink?: string;
+  projectDescription?: string;
+}
+
+export interface certificationType {
+  id: number;
+  certificateTitle?: string;
+  certificateLink?: string;
+  IssuedBy?: string;
+}
 
 const userData = createSlice({
   name: "userData",
@@ -61,6 +99,7 @@ const userData = createSlice({
       newLinks.splice(id, 1);
       state.links = newLinks;
     },
+
     addExperience(state, action: PayloadAction<experienceType>) {
       const { id } = action.payload;
       const experience = [...state.experience];
@@ -107,6 +146,75 @@ const userData = createSlice({
       education.splice(id, 1);
       state.education = education;
     },
+    addProject(state, action: PayloadAction<projectType>) {
+      const { id } = action.payload;
+      const project = [...state.project];
+      project[id] = action.payload;
+      state.project = project;
+    },
+    updateProject(state, action: PayloadAction<projectType>) {
+      const { id } = action.payload;
+      const project = [...state.project];
+      project.map((obj: { [key: string]: string | number | Date }) => {
+        if (obj.id === id) {
+          const secondKey = Object.keys(action.payload)[1];
+          obj[secondKey] = Object.values(action.payload)[1];
+        }
+      });
+      state.project = project;
+    },
+    deleteProject(state, action: PayloadAction<number>) {
+      const id = action.payload;
+      const project = [...state.project];
+      project.splice(id, 1);
+      state.project = project;
+    },
+    addCertification(state, action: PayloadAction<certificationType>) {
+      const { id } = action.payload;
+      const certification = [...state.certification];
+      certification[id] = action.payload;
+      state.certification = certification;
+    },
+    updateCertification(state, action: PayloadAction<certificationType>) {
+      const { id } = action.payload;
+      const certification = [...state.certification];
+      certification.map((obj: { [key: string]: string | number | Date }) => {
+        if (obj.id === id) {
+          const secondKey = Object.keys(action.payload)[1];
+          obj[secondKey] = Object.values(action.payload)[1];
+        }
+      });
+      state.certification = certification;
+    },
+    deleteCertification(state, action: PayloadAction<number>) {
+      const id = action.payload;
+      const certification = [...state.certification];
+      certification.splice(id, 1);
+      state.certification = certification;
+    },
+    addAward(state, action: PayloadAction<awardType>) {
+      const { id } = action.payload;
+      const award = [...state.award];
+      award[id] = action.payload;
+      state.award = award;
+    },
+    updateAward(state, action: PayloadAction<educationType>) {
+      const { id } = action.payload;
+      const award = [...state.award];
+      award.map((obj: { [key: string]: string | number | Date }) => {
+        if (obj.id === id) {
+          const secondKey = Object.keys(action.payload)[1];
+          obj[secondKey] = Object.values(action.payload)[1];
+        }
+      });
+      state.award = award;
+    },
+    deleteAward(state, action: PayloadAction<number>) {
+      const id = action.payload;
+      const award = [...state.award];
+      award.splice(id, 1);
+      state.award = award;
+    },
   },
 });
 
@@ -120,5 +228,14 @@ export const {
   addEduaction,
   updateEducation,
   deleteEduaction,
+  addProject,
+  updateProject,
+  deleteProject,
+  addCertification,
+  updateCertification,
+  deleteCertification,
+  addAward,
+  updateAward,
+  deleteAward,
 } = userData.actions;
 export default userData.reducer;

@@ -51,7 +51,7 @@ function AddLink() {
       content.push(
         <li className="flex">
           <select
-            className="rounded p-2 mr-3 mb-3 border-2"
+            className="rounded p-2 h-[48px] mr-3  border-2 bg-white"
             onChange={(e) => handleWebsiteNameChange(e, i)}
             value={myLinks[i].websiteName}
           >

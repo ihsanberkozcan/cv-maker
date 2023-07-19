@@ -95,7 +95,7 @@ function Education() {
           />
           Degree Type:
           <select
-            className="rounded p-2 mb-3 w-full border-2"
+            className="rounded p-2 h-[44px] mb-3 w-full border-2 bg-white"
             onChange={(e) => handleUpdateEducation(e, i, "degreeType")}
             value={education[i].degreeType}
           >

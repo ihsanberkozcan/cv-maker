@@ -130,7 +130,7 @@ function App() {
       case 12:
         return (
           <AnimationRender>
-            <Award />;
+            <Award />
           </AnimationRender>
         );
       case 13:

@@ -259,7 +259,7 @@ export const MyCV = () => {
       <h2 className="text-2xl md:text-2xl lg:text-4xl">File Name:</h2>
       <input type="text" onChange={handleFileName} />
       <div className="h-full">
-        <PDFViewer>
+        <PDFViewer showToolbar={false}>
           <Content
             name={name}
             email={email}

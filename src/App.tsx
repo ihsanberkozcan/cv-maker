@@ -10,6 +10,7 @@ import Education from "./components/Education";
 import Project from "./components/Project";
 import Certification from "./components/Certification";
 import Award from "./components/Award";
+import AnimationRender from "./components/AnimationRender";
 
 function App() {
   const { currentStep, lastStep } = useSelector((state: any) => state.step);
@@ -21,81 +22,123 @@ function App() {
     switch (currentStep) {
       case 0:
         return (
-          <div className="flex flex-col justify-center align-middle items-center w-full h-full">
-            <h1 className="text-center mb-10 text-6xl font-mono">CV Maker</h1>
-            <StartButton />
-          </div>
+          <AnimationRender>
+            <div className="flex flex-col justify-center align-middle items-center w-full h-full">
+              <h1 className="text-center mb-10 text-6xl font-mono">CV Maker</h1>
+              <StartButton />
+            </div>
+          </AnimationRender>
         );
       case 1:
         return (
-          <UserInput
-            title="Name Surname"
-            keyName="name"
-            inputType="short"
-            inputValue={name}
-          />
+          <AnimationRender>
+            <UserInput
+              title="Name Surname"
+              keyName="name"
+              inputType="short"
+              inputValue={name}
+            />
+          </AnimationRender>
         );
       case 2:
         return (
-          <UserInput
-            title="Job Title"
-            keyName="title"
-            inputType="short"
-            inputValue={title}
-          />
+          <AnimationRender>
+            <UserInput
+              title="Job Title"
+              keyName="title"
+              inputType="short"
+              inputValue={title}
+            />
+          </AnimationRender>
         );
       case 3:
         return (
-          <UserInput
-            title="Location"
-            keyName="location"
-            inputType="short"
-            inputValue={location}
-          />
+          <AnimationRender>
+            <UserInput
+              title="Location"
+              keyName="location"
+              inputType="short"
+              inputValue={location}
+            />
+          </AnimationRender>
         );
       case 4:
         return (
-          <UserInput
-            title="Email"
-            keyName="email"
-            inputType="short"
-            inputPlaceholder="test@test.com"
-            inputValue={email}
-          />
+          <AnimationRender>
+            <UserInput
+              title="Email"
+              keyName="email"
+              inputType="short"
+              inputPlaceholder="test@test.com"
+              inputValue={email}
+            />
+          </AnimationRender>
         );
       case 5:
         return (
-          <UserInput
-            title="Phone Number"
-            keyName="phoneNumber"
-            inputType="short"
-            inputPlaceholder="+900000000000"
-            inputValue={phoneNumber}
-          />
+          <AnimationRender>
+            <UserInput
+              title="Phone Number"
+              keyName="phoneNumber"
+              inputType="short"
+              inputPlaceholder="+900000000000"
+              inputValue={phoneNumber}
+            />
+          </AnimationRender>
         );
       case 6:
         return (
-          <UserInput
-            title="Skills"
-            keyName="skills"
-            inputType="long"
-            inputValue={skills}
-          />
+          <AnimationRender>
+            <UserInput
+              title="Skills"
+              keyName="skills"
+              inputType="long"
+              inputValue={skills}
+            />
+          </AnimationRender>
         );
       case 7:
-        return <AddLink />;
+        return (
+          <AnimationRender>
+            <AddLink />
+          </AnimationRender>
+        );
       case 8:
-        return <Experience />;
+        return (
+          <AnimationRender>
+            <Experience />
+          </AnimationRender>
+        );
       case 9:
-        return <Education />;
+        return (
+          <AnimationRender>
+            <Education />
+          </AnimationRender>
+        );
       case 10:
-        return <Project />;
+        return (
+          <AnimationRender>
+            <Project />
+          </AnimationRender>
+        );
       case 11:
-        return <Certification />;
+        return (
+          <AnimationRender>
+            <Certification />
+          </AnimationRender>
+        );
       case 12:
-        return <Award />;
+        return (
+          <AnimationRender>
+            <Award />;
+          </AnimationRender>
+        );
       case 13:
-        return <MyCV />;
+        return (
+          <AnimationRender>
+            <MyCV />
+          </AnimationRender>
+        );
       default:
         break;
     }
@@ -103,7 +146,7 @@ function App() {
   return (
     <div className="flex flex-col h-screen relative">
       <div
-        className={`w-full h-full p-4 md:p-5 lg:p-10 bg-[#F9F7F7] ${
+        className={`w-full h-full p-4 md:p-5 lg:p-10 overflow-hidden bg-[#F9F7F7] ${
           currentStep !== 0 ? "mt-20 md:mt-20 lg:mt-16" : ""
         }`}
       >

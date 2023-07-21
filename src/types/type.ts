@@ -67,6 +67,7 @@ export interface UpdateDataPayload {
 
 export interface pageType {
   currentStep: number;
+  previousStep: number;
   lastStep: number;
 }
 

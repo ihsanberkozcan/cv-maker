@@ -1,10 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { pageType } from "../types/type";
 
-
-
 const initialState: pageType = {
   currentStep: 0,
+  previousStep: 0,
   lastStep: 13,
 };
 
@@ -13,10 +12,12 @@ const step = createSlice({
   initialState,
   reducers: {
     nextStep(state) {
+      state.previousStep = state.currentStep;
       state.currentStep = state.currentStep + 1;
     },
     backStep(state) {
-      state.currentStep = state.currentStep + -1;
+      state.previousStep = state.currentStep;
+      state.currentStep = state.currentStep - 1;
     },
   },
 });

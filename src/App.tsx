@@ -146,7 +146,7 @@ function App() {
   return (
     <div className="flex flex-col h-screen relative">
       <div
-        className={`w-full h-full p-4 md:p-5 lg:p-10 overflow-hidden bg-[#F9F7F7] ${
+        className={`w-full h-full p-4 md:p-5 lg:p-10 overflow-x-hidden bg-[#F9F7F7] ${
           currentStep !== 0 ? "mt-20 md:mt-20 lg:mt-16" : ""
         }`}
       >

@@ -10,9 +10,17 @@ iframe{
 
 
 input{
-  @apply mb-3 w-full rounded p-2 border-2
+  @apply mb-3 w-full rounded p-2 border-2 focus:outline-indigo-300
 }
 
 textarea{
-  @apply mb-3 w-full rounded p-2 border-2
+  @apply mb-3 w-full rounded p-2 border-2 focus:outline-indigo-300
+}
+
+select{
+  @apply focus:outline-indigo-300
+}
+
+button{
+  @apply focus:outline-indigo-500
 }

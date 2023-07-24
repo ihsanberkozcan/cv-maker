@@ -1,13 +1,11 @@
-iframe{
-  width: 100%;
-  height: 100%;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-
+iframe{
+  width: 100%;
+  height: 100%;
+}
 
 input{
   @apply mb-3 w-full rounded p-2 border-2 focus:outline-indigo-300

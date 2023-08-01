@@ -5,12 +5,12 @@ import Experience from "./components/Experience";
 import NextButton from "./components/NextButton";
 import BackButton from "./components/BackButton";
 import { useSelector } from "react-redux";
-import StartButton from "./components/StartButton";
 import Education from "./components/Education";
 import Project from "./components/Project";
 import Certification from "./components/Certification";
 import Award from "./components/Award";
 import AnimationRender from "./components/AnimationRender";
+import MainPage from "./components/MainPage";
 
 function App() {
   const { currentStep, lastStep } = useSelector((state: any) => state.step);
@@ -23,10 +23,7 @@ function App() {
       case 0:
         return (
           <AnimationRender>
-            <div className="flex flex-col justify-center align-middle items-center w-full h-full">
-              <h1 className="text-center mb-10 text-6xl font-mono">CV Maker</h1>
-              <StartButton />
-            </div>
+            <MainPage />
           </AnimationRender>
         );
       case 1:

@@ -1,9 +1,11 @@
 import { deleteLink, updateLink } from "../stores/userData";
 import { useDispatch, useSelector } from "react-redux";
+import { useTranslation } from "react-i18next";
 
 function AddLink() {
   const { links: myLinks } = useSelector((state: any) => state.userData);
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const handleWebsiteNameChange = (
     e: React.ChangeEvent<HTMLSelectElement>,
     id: number
@@ -55,7 +57,7 @@ function AddLink() {
             onChange={(e) => handleWebsiteNameChange(e, i)}
             value={myLinks[i].websiteName}
           >
-            <option value="">Please Select</option>
+            <option value="">{t("Please Select")}</option>
             <option value="GitHub">GitHub</option>
             <option value="GitLab">GitLab</option>
             <option value="LinkedIn">LinkedIn</option>
@@ -101,7 +103,7 @@ function AddLink() {
         className="bg-indigo-300 rounded text-white p-3 mt-5 w-full"
         onClick={() => addNewLink()}
       >
-        Add New Link
+        {t("Add New Link")}
       </button>
     </div>
   );

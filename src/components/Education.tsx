@@ -5,12 +5,12 @@ import {
   deleteEduaction,
 } from "../stores/userData";
 import DatePicker from "react-datepicker";
-
+import { useTranslation } from "react-i18next";
 import "react-datepicker/dist/react-datepicker.css";
 
 function Education() {
   const dispatch = useDispatch();
-
+  const { t } = useTranslation();
   const { education } = useSelector((state: any) => state.userData);
 
   const addNewEducation = () => {
@@ -65,7 +65,7 @@ function Education() {
         <div>
           <div className="flex justify-between mb-2">
             <h2 className="text-2xl md:text-2xl lg:text-4xl">
-              {i + 1}. Education:
+              {i + 1}. {t("Education")}:
             </h2>
             <button
               className="text-red-200 p-3 mt-"
@@ -87,19 +87,19 @@ function Education() {
               </svg>
             </button>
           </div>
-          Institute Name:
+          {t("Institute Name")}:
           <input
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "instituteName")}
             value={education[i].instituteName}
           />
-          Degree Type:
+          {t("Degree Type")}:
           <select
             className="rounded p-2 h-[44px] mb-3 w-full border-2 bg-white"
             onChange={(e) => handleUpdateEducation(e, i, "degreeType")}
             value={education[i].degreeType}
           >
-            <option value="">Please Select</option>
+            <option value="">{t("Please Select")}</option>
             <option value="Associate's Degree">Associate's Degree</option>
             <option value="Bachelor's Degree">Bachelor's Degree</option>
             <option value="Master's Degree">Master's Degree</option>
@@ -107,13 +107,13 @@ function Education() {
               Doctorate (Ph.D.) Degree
             </option>
           </select>
-          Field of Study:
+          {t("Field of Study")}:
           <input
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "fieldOfStudy")}
             value={education[i].fieldOfStudy}
           />
-          <div className="w-full">Start Date:</div>
+          <div className="w-full">{t("Start Date")}:</div>
           <DatePicker
             wrapperClassName="w-full"
             selected={education[i].startDate}
@@ -123,7 +123,7 @@ function Education() {
             showMonthYearPicker
             dateFormat="MMM yyyy"
           />
-          <div className="w-full">End Date:</div>
+          <div className="w-full">{t("End Date")}:</div>
           <DatePicker
             wrapperClassName="w-full"
             selected={education[i].endDate}
@@ -133,13 +133,13 @@ function Education() {
             showMonthYearPicker
             dateFormat="MMM yyyy"
           />
-          <div className="w-full">Location:</div>
+          <div className="w-full">{t("Location")}:</div>
           <input
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "location")}
             value={education[i].location}
           />
-          Scores:
+          {t("Scores")}:
           <input
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "scores")}
@@ -158,7 +158,7 @@ function Education() {
         className="bg-indigo-300 rounded text-white p-3 mt-5 mb-5 w-full"
         onClick={() => addNewEducation()}
       >
-        Add New Education
+        {t("Add New Education")}
       </button>
     </div>
   );

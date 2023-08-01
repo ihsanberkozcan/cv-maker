@@ -8,6 +8,7 @@ import {
   PDFDownloadLink,
   Font,
 } from "@react-pdf/renderer";
+import { useTranslation } from "react-i18next";
 
 import OpenSans from "../fonts/OpenSans-Regular.ttf";
 import { useDispatch, useSelector } from "react-redux";
@@ -108,6 +109,7 @@ export const Content = ({
     fontWeight: "normal",
     fontStyle: "normal",
   });
+  const { t } = useTranslation();
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -138,12 +140,12 @@ export const Content = ({
         </View>
         <View style={styles.line} />
         <View style={styles.section}>
-          <Text style={styles.subtitle}>Skills</Text>
+          <Text style={styles.subtitle}>{t("Skills")}</Text>
           <Text style={styles.text}>{skills}</Text>
         </View>
         <View style={styles.line} />
         <View style={styles.section}>
-          <Text style={styles.subtitle}>Experience</Text>
+          <Text style={styles.subtitle}>{t("Experience")}</Text>
           {experience?.map((myExperience: experienceType) => (
             <View style={styles.subSection}>
               <View>
@@ -163,7 +165,7 @@ export const Content = ({
         </View>
         <View style={styles.line} />
         <View style={styles.section}>
-          <Text style={styles.subtitle}>Education</Text>
+          <Text style={styles.subtitle}>{t("Education")}</Text>
           {education.map((myEducation: educationType) => (
             <View style={styles.subSection}>
               <View>
@@ -184,7 +186,7 @@ export const Content = ({
         </View>
         <View style={styles.line} />
         <View style={styles.section}>
-          <Text style={styles.subtitle}>Projects</Text>
+          <Text style={styles.subtitle}>{t("Projects")}</Text>
           {project.map((myProject: projectType) => (
             <View style={styles.subSection}>
               <View>
@@ -199,7 +201,7 @@ export const Content = ({
         </View>
         <View style={styles.line} />
         <View style={styles.section}>
-          <Text style={styles.subtitle}>Certifications</Text>
+          <Text style={styles.subtitle}>{t("Certifications")}</Text>
           {certification.map((myCertification: certificationType) => (
             <View style={styles.subSection}>
               <View>
@@ -216,7 +218,7 @@ export const Content = ({
         </View>
         <View style={styles.line} />
         <View style={styles.section}>
-          <Text style={styles.subtitle}>Awards</Text>
+          <Text style={styles.subtitle}>{t("Awards")}</Text>
           {award.map((myAward: awardType) => (
             <View style={styles.subSection}>
               <View>
@@ -234,6 +236,7 @@ export const Content = ({
 };
 
 export const MyCV = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
   const {
     fileName,
@@ -256,7 +259,7 @@ export const MyCV = () => {
   };
   return (
     <div className="h-full flex flex-col">
-      <h2 className="text-2xl md:text-2xl lg:text-4xl">File Name:</h2>
+      <h2 className="text-2xl md:text-2xl lg:text-4xl">{t("File Name")}:</h2>
       <input type="text" onChange={handleFileName} />
       <div className="h-full">
         <PDFViewer showToolbar={false}>
@@ -311,6 +314,7 @@ export const DownloadLink = ({
   certification,
   award,
 }: userDataType) => {
+  const { t } = useTranslation();
   return (
     <PDFDownloadLink
       className="bg-indigo-300 rounded text-white mb-3 p-3 mt-3 w-full text-center"
@@ -332,7 +336,7 @@ export const DownloadLink = ({
       }
       fileName={`${fileName}.pdf`}
     >
-      {({ loading }) => (loading ? "Loading document..." : "Download")}
+      {({ loading }) => (loading ? t("Loading document...") : t("Download"))}
     </PDFDownloadLink>
   );
 };

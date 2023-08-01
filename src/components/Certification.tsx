@@ -1,16 +1,13 @@
-
-
-
-
 import { useDispatch, useSelector } from "react-redux";
 import {
   addCertification,
   deleteCertification,
   updateCertification,
 } from "../stores/userData";
-
+import { useTranslation } from "react-i18next";
 function Certification() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { certification } = useSelector((state: any) => state.userData);
 
   const handleUpdateCertification = (
@@ -45,7 +42,7 @@ function Certification() {
         <div>
           <div className="flex justify-between mb-2">
             <h2 className="text-2xl md:text-2xl lg:text-4xl">
-              {i + 1}. Certification:
+              {i + 1}. {t("Certification")}:
             </h2>
             <button
               className="text-red-200 p-3 mt-"
@@ -67,19 +64,21 @@ function Certification() {
               </svg>
             </button>
           </div>
-          Certificate Title:
+          {t("Certificate Title")}:
           <input
             type="text"
-            onChange={(e) => handleUpdateCertification(e, i, "certificateTitle")}
+            onChange={(e) =>
+              handleUpdateCertification(e, i, "certificateTitle")
+            }
             value={certification[i].certificateTitle}
           />
-          Issued By:
+          {t("Issued By")}:
           <input
             type="text"
             onChange={(e) => handleUpdateCertification(e, i, "IssuedBy")}
             value={certification[i].IssuedBy}
           />
-          Certificate Link:
+          {t("Certificate Link")}:
           <input
             type="text"
             onChange={(e) => handleUpdateCertification(e, i, "certificateLink")}
@@ -98,10 +97,10 @@ function Certification() {
         className="bg-indigo-300 rounded text-white p-3 mt-5 mb-5 w-full"
         onClick={() => addNewCertification()}
       >
-        Add New Certificate
+        {t("Add New Certificate")}
       </button>
     </div>
   );
 }
 
-export default Certification
+export default Certification;

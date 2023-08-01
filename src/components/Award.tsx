@@ -1,15 +1,9 @@
-
-
-
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addAward,
-  deleteAward,
-  updateAward,
-} from "../stores/userData";
-
+import { addAward, deleteAward, updateAward } from "../stores/userData";
+import { useTranslation } from "react-i18next";
 function Award() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { award } = useSelector((state: any) => state.userData);
 
   const handleUpdateAward = (
@@ -44,7 +38,7 @@ function Award() {
         <div>
           <div className="flex justify-between mb-2">
             <h2 className="text-2xl md:text-2xl lg:text-4xl">
-              {i + 1}. Award:
+              {i + 1}. {t("Award")}:
             </h2>
             <button
               className="text-red-200 p-3 mt-"
@@ -66,14 +60,13 @@ function Award() {
               </svg>
             </button>
           </div>
-          Award Title:
+          {t("Award Title")}:
           <input
             type="text"
             onChange={(e) => handleUpdateAward(e, i, "awardTitle")}
             value={award[i].awardTitle}
           />
-        
-          Award Description:
+          {t("Award Description")}:
           <textarea
             onChange={(e) => handleUpdateAward(e, i, "awardDescription")}
             value={award[i].awardDescription}
@@ -91,10 +84,10 @@ function Award() {
         className="bg-indigo-300 rounded text-white p-3 mt-5 mb-5 w-full"
         onClick={() => addNewAward()}
       >
-        Add New Award
+        {t("Add New Award")}
       </button>
     </div>
   );
 }
 
-export default Award
+export default Award;

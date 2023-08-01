@@ -1,12 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import {
-  addProject,
-  deleteProject,
-  updateProject,
-} from "../stores/userData";
-
+import { addProject, deleteProject, updateProject } from "../stores/userData";
+import { useTranslation } from "react-i18next";
 function Project() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { project } = useSelector((state: any) => state.userData);
 
   const handleUpdateProject = (
@@ -41,7 +38,7 @@ function Project() {
         <div>
           <div className="flex justify-between mb-2">
             <h2 className="text-2xl md:text-2xl lg:text-4xl">
-              {i + 1}. Project:
+              {i + 1}. {t("Project")}:
             </h2>
             <button
               className="text-red-200 p-3 mt-"
@@ -63,19 +60,19 @@ function Project() {
               </svg>
             </button>
           </div>
-          Project Title:
+          {t("Project Title")}:
           <input
             type="text"
             onChange={(e) => handleUpdateProject(e, i, "projectTitle")}
             value={project[i].projectTitle}
           />
-          Project Link:
+          {t("Project Link")}:
           <input
             type="text"
             onChange={(e) => handleUpdateProject(e, i, "projectLink")}
             value={project[i].projectLink}
           />
-          Project Description:
+          {t("Project Description")}:
           <textarea
             onChange={(e) => handleUpdateProject(e, i, "projectDescription")}
             value={project[i].projectDescription}
@@ -93,7 +90,7 @@ function Project() {
         className="bg-indigo-300 rounded text-white p-3 mt-5 mb-5 w-full"
         onClick={() => addNewProject()}
       >
-        Add New Project
+        {t("Add New Project")}
       </button>
     </div>
   );

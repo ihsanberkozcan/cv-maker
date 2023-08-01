@@ -1,7 +1,7 @@
 import { updateData } from "../stores/userData";
 import { useDispatch } from "react-redux";
 import { UserInputProps, userDataType } from "../types/type";
-
+import { useTranslation } from "react-i18next";
 function UserInput({
   title,
   keyName,
@@ -10,6 +10,7 @@ function UserInput({
   inputValue,
 }: UserInputProps) {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const handlechange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
     keyName: keyof userDataType
@@ -18,7 +19,7 @@ function UserInput({
   };
   return (
     <div>
-      <div className="text-2xl md:text-2xl lg:text-4xl mb-3">{title}:</div>
+      <div className="text-2xl md:text-2xl lg:text-4xl mb-3">{t(title)}:</div>
       {inputType === "short" ? (
         <input
           className="mt-3 w-full rounded p-2"

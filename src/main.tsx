@@ -3,7 +3,7 @@ import App from "./App.tsx";
 import "./index.css";
 import store from "./stores/index.ts";
 import { Provider } from "react-redux";
-
+import "./translation/i18n.ts";
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );

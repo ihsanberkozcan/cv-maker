@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-
+import { useTranslation } from "react-i18next";
 import {
   addExperience,
   deleteExperience,
@@ -12,6 +12,7 @@ import {
 
 function Experience() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const { experience } = useSelector((state: any) => state.userData);
 
@@ -66,7 +67,7 @@ function Experience() {
         <div>
           <div className="flex justify-between mb-2">
             <h2 className="text-2xl md:text-2xl lg:text-4xl">
-              {i + 1}. Experience:
+              {i + 1}. {t("Experience")}:
             </h2>
             <button
               className="text-red-200 p-3 mt-"
@@ -88,19 +89,19 @@ function Experience() {
               </svg>
             </button>
           </div>
-          Company Name:
+          {t("Company Name")}:
           <input
             type="text"
             onChange={(e) => handleUpdateExperience(e, i, "employer")}
             value={experience[i].employer}
           />
-          Job Title:
+          {t("Job Title")}:
           <input
             type="text"
             onChange={(e) => handleUpdateExperience(e, i, "jobTitle")}
             value={experience[i].jobTitle}
           />
-          <div className="w-full">Start Date:</div>
+          <div className="w-full"> {t("Start Date")}:</div>
           <DatePicker
             wrapperClassName="w-full"
             selected={experience[i].startDate}
@@ -110,7 +111,7 @@ function Experience() {
             showMonthYearPicker
             dateFormat="MMM yyyy"
           />
-          <div className="w-full">End Date:</div>
+          <div className="w-full"> {t("End Date")}:</div>
           <DatePicker
             wrapperClassName="w-full"
             selected={experience[i].endDate}
@@ -120,13 +121,13 @@ function Experience() {
             showMonthYearPicker
             dateFormat="MMM yyyy"
           />
-          <div className="w-full">Location:</div>
+          <div className="w-full"> {t("Location")}:</div>
           <input
             type="text"
             onChange={(e) => handleUpdateExperience(e, i, "location")}
             value={experience[i].location}
           />
-          Description:
+          {t("Description")}:
           <textarea
             onChange={(e) => handleUpdateExperience(e, i, "description")}
             value={experience[i].description}
@@ -145,7 +146,7 @@ function Experience() {
         className="bg-indigo-300 rounded text-white p-3 mt-5 mb-5 w-full"
         onClick={() => addNewExperience()}
       >
-        Add New Experience
+        {t("Add New Experience")}
       </button>
     </div>
   );

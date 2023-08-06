@@ -28,21 +28,27 @@ const styles = StyleSheet.create({
   page: {
     flexDirection: "column",
     backgroundColor: "#ffffff",
-    padding: 30,
     fontFamily: "Open Sans",
   },
   cvHeader: {
+    backgroundColor: "blue",
+    paddingHorizontal: "30",
+    paddingVertical: "20",
+    color: "white",
     width: "100%",
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
   },
+  content: {
+    paddingHorizontal: "40",
+    paddingTop: "10",
+    paddingBottom: "30",
+  },
   cvSubPart: {
     flexDirection: "row",
   },
-  section: {
-    marginBottom: 5,
-  },
+  section: {},
   subSection: {
     flexDirection: "row",
     marginBottom: 10,
@@ -63,9 +69,9 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   subtitle: {
+    color: "blue",
     fontSize: 18,
     fontWeight: "bold",
-    marginBottom: 5,
   },
   header: {
     fontSize: 13,
@@ -79,10 +85,9 @@ const styles = StyleSheet.create({
     alignItems: "flex-end",
   },
   line: {
-    marginBottom: 10,
-    marginTop: 10,
+    marginVertical: 5,
     height: 1,
-    backgroundColor: "black",
+    backgroundColor: "blue",
   },
   description: {
     fontSize: 12,
@@ -123,8 +128,8 @@ export const Content = ({
             <Text style={styles.text}>&nbsp;|&nbsp;</Text>
             <Text style={styles.text}>{location}</Text>
           </View>
-          <View style={styles.links}>
-            {links.map((mylink: linksType, index: number) => (
+          {links.length?(  <View style={styles.links}>
+            {links?.map((mylink: linksType, index: number) => (
               <>
                 <Text style={styles.text}>{mylink.websiteName} :&nbsp;</Text>
                 <Text style={styles.text}>{mylink.link}</Text>
@@ -136,106 +141,126 @@ export const Content = ({
                 )}
               </>
             ))}
-          </View>
+          </View>):null}
+        
         </View>
-        <View style={styles.line} />
-        <View style={styles.section}>
-          <Text style={styles.subtitle}>{t("Skills")}</Text>
-          <Text style={styles.text}>{skills}</Text>
-        </View>
-        <View style={styles.line} />
-        <View style={styles.section}>
-          <Text style={styles.subtitle}>{t("Experience")}</Text>
-          {experience?.map((myExperience: experienceType) => (
-            <View style={styles.subSection}>
-              <View>
-                <Text style={styles.header}>{myExperience.employer}</Text>
-                <Text style={styles.header}>{myExperience.jobTitle}</Text>
-                <Text style={styles.text}>{myExperience.description}</Text>
-              </View>
-              <View style={styles.dateAndLocation}>
-                <Text style={styles.text}>
-                  {formatDate(myExperience.startDate)} -&nbsp;
-                  {formatDate(myExperience.endDate)}
-                </Text>
-                <Text style={styles.text}>{myExperience.location}</Text>
-              </View>
+        <View style={styles.content}>
+          {skills.length ? (
+            <View style={styles.section}>
+              <Text style={styles.subtitle}>{t("Skills")}</Text>
+              <View style={styles.line} />
+              <Text style={styles.text}>{skills}</Text>
             </View>
-          ))}
-        </View>
-        <View style={styles.line} />
-        <View style={styles.section}>
-          <Text style={styles.subtitle}>{t("Education")}</Text>
-          {education.map((myEducation: educationType) => (
-            <View style={styles.subSection}>
-              <View>
-                <Text style={styles.header}>{myEducation.instituteName}</Text>
-                <Text style={styles.header}>{myEducation.degreeType}</Text>
-                <Text style={styles.text}>{myEducation.fieldOfStudy}</Text>
-              </View>
-              <View style={styles.dateAndLocation}>
-                <Text style={styles.text}>
-                  {formatDate(myEducation.startDate)} -&nbsp;
-                  {formatDate(myEducation.endDate)}
-                </Text>
-                <Text style={styles.text}>{myEducation.scores}</Text>
-                <Text style={styles.text}>{myEducation.location}</Text>
-              </View>
+          ) : null}
+
+          {experience.length ? (
+            <View style={styles.section}>
+              <Text style={styles.subtitle}>{t("Experience")}</Text>
+              <View style={styles.line} />
+              {experience?.map((myExperience: experienceType) => (
+                <View style={styles.subSection}>
+                  <View>
+                    <Text style={styles.header}>{myExperience.employer}</Text>
+                    <Text style={styles.header}>{myExperience.jobTitle}</Text>
+                    <Text style={styles.text}>{myExperience.description}</Text>
+                  </View>
+                  <View style={styles.dateAndLocation}>
+                    <Text style={styles.text}>
+                      {formatDate(myExperience.startDate)} -&nbsp;
+                      {formatDate(myExperience.endDate)}
+                    </Text>
+                    <Text style={styles.text}>{myExperience.location}</Text>
+                  </View>
+                </View>
+              ))}
             </View>
-          ))}
-        </View>
-        <View style={styles.line} />
-        <View style={styles.section}>
-          <Text style={styles.subtitle}>{t("Projects")}</Text>
-          {project.map((myProject: projectType) => (
-            <View style={styles.subSection}>
-              <View>
-                <Text style={styles.header}>{myProject.projectTitle}</Text>
-                <Text style={styles.header}>{myProject.projectLink}</Text>
-                <Text style={styles.description}>
-                  {myProject.projectDescription}
-                </Text>
-              </View>
+          ) : null}
+          {education.length ? (
+            <View style={styles.section}>
+              <Text style={styles.subtitle}>{t("Education")}</Text>
+              <View style={styles.line} />
+              {education.map((myEducation: educationType) => (
+                <View style={styles.subSection}>
+                  <View>
+                    <Text style={styles.header}>
+                      {myEducation.instituteName}
+                    </Text>
+                    <Text style={styles.header}>{myEducation.degreeType}</Text>
+                    <Text style={styles.text}>{myEducation.fieldOfStudy}</Text>
+                  </View>
+                  <View style={styles.dateAndLocation}>
+                    <Text style={styles.text}>
+                      {formatDate(myEducation.startDate)} -&nbsp;
+                      {formatDate(myEducation.endDate)}
+                    </Text>
+                    <Text style={styles.text}>{myEducation.scores}</Text>
+                    <Text style={styles.text}>{myEducation.location}</Text>
+                  </View>
+                </View>
+              ))}
             </View>
-          ))}
-        </View>
-        <View style={styles.line} />
-        <View style={styles.section}>
-          <Text style={styles.subtitle}>{t("Certifications")}</Text>
-          {certification.map((myCertification: certificationType) => (
-            <View style={styles.subSection}>
-              <View>
-                <Text style={styles.header}>
-                  {myCertification.certificateTitle}
-                </Text>
-                <Text style={styles.header}>{myCertification.IssuedBy}</Text>
-                <Text style={styles.header}>
-                  {myCertification.certificateLink}
-                </Text>
-              </View>
+          ) : null}
+          {project.length ? (
+            <View style={styles.section}>
+              <Text style={styles.subtitle}>{t("Projects")}</Text>
+              <View style={styles.line} />
+              {project.map((myProject: projectType) => (
+                <View style={styles.subSection}>
+                  <View>
+                    <Text style={styles.header}>{myProject.projectTitle}</Text>
+                    <Text style={styles.header}>{myProject.projectLink}</Text>
+                    <Text style={styles.description}>
+                      {myProject.projectDescription}
+                    </Text>
+                  </View>
+                </View>
+              ))}
             </View>
-          ))}
-        </View>
-        <View style={styles.line} />
-        <View style={styles.section}>
-          <Text style={styles.subtitle}>{t("Awards")}</Text>
-          {award.map((myAward: awardType) => (
-            <View style={styles.subSection}>
-              <View>
-                <Text style={styles.header}>{myAward.awardTitle}</Text>
-                <Text style={styles.description}>
-                  {myAward.awardDescription}
-                </Text>
-              </View>
+          ) : null}
+          {certification.length ? (
+            <View style={styles.section}>
+              <Text style={styles.subtitle}>{t("Certifications")}</Text>
+              <View style={styles.line} />
+              {certification.map((myCertification: certificationType) => (
+                <View style={styles.subSection}>
+                  <View>
+                    <Text style={styles.header}>
+                      {myCertification.certificateTitle}
+                    </Text>
+                    <Text style={styles.header}>
+                      {myCertification.IssuedBy}
+                    </Text>
+                    <Text style={styles.header}>
+                      {myCertification.certificateLink}
+                    </Text>
+                  </View>
+                </View>
+              ))}
             </View>
-          ))}
+          ) : null}
+          {award.length ? (
+            <View style={styles.section}>
+              <Text style={styles.subtitle}>{t("Awards")}</Text>
+              <View style={styles.line} />
+              {award.map((myAward: awardType) => (
+                <View style={styles.subSection}>
+                  <View>
+                    <Text style={styles.header}>{myAward.awardTitle}</Text>
+                    <Text style={styles.description}>
+                      {myAward.awardDescription}
+                    </Text>
+                  </View>
+                </View>
+              ))}
+            </View>
+          ) : null}
         </View>
       </Page>
     </Document>
   );
 };
 
-export const MyCV = () => {
+export const ModernResume = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const {

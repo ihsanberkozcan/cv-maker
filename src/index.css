@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+
 iframe{
   width: 100%;
   height: 100%;
+border: none;
 }
 
 input{
@@ -21,4 +23,8 @@ select{
 
 button{
   @apply focus:outline-indigo-500
+}
+
+.resume-type{
+  @apply p-10 text-indigo-300 rounded-lg border-2 border-indigo-300 hover:bg-indigo-50 transition duration-500 hover:scale-110 
 }

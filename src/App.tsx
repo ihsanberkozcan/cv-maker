@@ -1,4 +1,4 @@
-import { MyCV } from "./components/MyCV";
+import { ClassicResume } from "./components/ClassicResume";
 import UserInput from "./components/UserInput";
 import AddLink from "./components/AddLink";
 import Experience from "./components/Experience";
@@ -11,9 +11,13 @@ import Certification from "./components/Certification";
 import Award from "./components/Award";
 import AnimationRender from "./components/AnimationRender";
 import MainPage from "./components/MainPage";
-
+import ResumeStyle from "./components/ResumeStyle";
+import { ModernResume } from "./components/ModernResume";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
   const { currentStep, lastStep } = useSelector((state: any) => state.step);
+  const { resumeType } = useSelector((state: any) => state.resumeType);
   const { name, title, email, location, phoneNumber, skills } = useSelector(
     (state: any) => state.userData
   );
@@ -29,6 +33,12 @@ function App() {
       case 1:
         return (
           <AnimationRender>
+            <ResumeStyle />
+          </AnimationRender>
+        );
+      case 2:
+        return (
+          <AnimationRender>
             <UserInput
               title="Name Surname"
               keyName="name"
@@ -37,7 +47,7 @@ function App() {
             />
           </AnimationRender>
         );
-      case 2:
+      case 3:
         return (
           <AnimationRender>
             <UserInput
@@ -48,17 +58,7 @@ function App() {
             />
           </AnimationRender>
         );
-      case 3:
-        return (
-          <AnimationRender>
-            <UserInput
-              title="Location"
-              keyName="location"
-              inputType="short"
-              inputValue={location}
-            />
-          </AnimationRender>
-        );
+
       case 4:
         return (
           <AnimationRender>
@@ -87,10 +87,10 @@ function App() {
         return (
           <AnimationRender>
             <UserInput
-              title="Skills"
-              keyName="skills"
-              inputType="long"
-              inputValue={skills}
+              title="Location"
+              keyName="location"
+              inputType="short"
+              inputValue={location}
             />
           </AnimationRender>
         );
@@ -103,37 +103,52 @@ function App() {
       case 8:
         return (
           <AnimationRender>
-            <Experience />
+            <UserInput
+              title="Skills"
+              keyName="skills"
+              inputType="long"
+              inputValue={skills}
+            />
           </AnimationRender>
         );
       case 9:
         return (
           <AnimationRender>
-            <Education />
+            <Experience />
           </AnimationRender>
         );
       case 10:
         return (
           <AnimationRender>
-            <Project />
+            <Education />
           </AnimationRender>
         );
       case 11:
         return (
           <AnimationRender>
-            <Certification />
+            <Project />
           </AnimationRender>
         );
       case 12:
         return (
           <AnimationRender>
-            <Award />
+            <Certification />
           </AnimationRender>
         );
       case 13:
         return (
           <AnimationRender>
-            <MyCV />
+            <Award />
+          </AnimationRender>
+        );
+      case 14:
+        return (
+          <AnimationRender>
+            {resumeType === "classic" ? (
+              <ClassicResume />
+            ) : resumeType === "modern" ? (
+              <ModernResume />
+            ) : null}
           </AnimationRender>
         );
       default:
@@ -142,8 +157,20 @@ function App() {
   };
   return (
     <div className="flex flex-col h-screen relative">
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <div
-        className={`w-full h-full p-4 md:p-5 lg:p-10 overflow-x-hidden bg-[#F9F7F7] ${
+        className={`w-full h-full p-6 md:p-8 lg:p-10 overflow-x-hidden bg-[#F9F7F7] ${
           currentStep !== 0 ? "mt-20 md:mt-20 lg:mt-16" : ""
         }`}
       >

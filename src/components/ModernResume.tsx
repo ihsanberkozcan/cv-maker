@@ -4,10 +4,28 @@ import {
   Text,
   View,
   StyleSheet,
-  PDFViewer,
+  BlobProvider,
   PDFDownloadLink,
   Font,
 } from "@react-pdf/renderer";
+
+import { pdfjs, Document as ReactDocument, Page as ReactPage } from "react-pdf";
+
+import "react-pdf/dist/esm/Page/AnnotationLayer.css";
+import "react-pdf/dist/esm/Page/TextLayer.css";
+
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  "pdfjs-dist/build/pdf.worker.min.js",
+  import.meta.url
+).toString();
+
+const options = {
+  cMapUrl: "/cmaps/",
+  standardFontDataUrl: "/standard_fonts/",
+};
+
+type PDFFile = string | File | null;
+
 import { useTranslation } from "react-i18next";
 
 import OpenSans from "../fonts/OpenSans-Regular.ttf";
@@ -23,6 +41,7 @@ import {
 } from "../types/type";
 import { updateData } from "../stores/userData";
 import { formatDate } from "../utils/formatDate";
+import { useState } from "react";
 
 const styles = StyleSheet.create({
   page: {
@@ -128,21 +147,22 @@ export const Content = ({
             <Text style={styles.text}>&nbsp;|&nbsp;</Text>
             <Text style={styles.text}>{location}</Text>
           </View>
-          {links.length?(  <View style={styles.links}>
-            {links?.map((mylink: linksType, index: number) => (
-              <>
-                <Text style={styles.text}>{mylink.websiteName} :&nbsp;</Text>
-                <Text style={styles.text}>{mylink.link}</Text>
+          {links.length ? (
+            <View style={styles.links}>
+              {links?.map((mylink: linksType, index: number) => (
+                <>
+                  <Text style={styles.text}>{mylink.websiteName} :&nbsp;</Text>
+                  <Text style={styles.text}>{mylink.link}</Text>
 
-                {index !== links.length - 1 ? (
-                  <Text style={styles.text}>&nbsp;|&nbsp;</Text>
-                ) : (
-                  <></>
-                )}
-              </>
-            ))}
-          </View>):null}
-        
+                  {index !== links.length - 1 ? (
+                    <Text style={styles.text}>&nbsp;|&nbsp;</Text>
+                  ) : (
+                    <></>
+                  )}
+                </>
+              ))}
+            </View>
+          ) : null}
         </View>
         <View style={styles.content}>
           {skills.length ? (
@@ -261,6 +281,13 @@ export const Content = ({
 };
 
 export const ModernResume = () => {
+  const [numPages, setNumPages] = useState<number>();
+  const [pageNumber, setPageNumber] = useState<number>(1);
+
+  function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
+    setNumPages(numPages);
+  }
+
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const {
@@ -283,27 +310,82 @@ export const ModernResume = () => {
     dispatch(updateData({ key: "fileName", value: e.target.value }));
   };
   return (
-    <div className="h-full flex flex-col">
+    <div className="flex flex-col items-center">
       <h2 className="text-2xl md:text-2xl lg:text-4xl">{t("File Name")}:</h2>
       <input type="text" onChange={handleFileName} />
-      <div className="h-full">
-        <PDFViewer showToolbar={false}>
-          <Content
-            name={name}
-            email={email}
-            phoneNumber={phoneNumber}
-            title={title}
-            links={links}
-            location={location}
-            skills={skills}
-            experience={experience}
-            education={education}
-            fileName={""}
-            project={project}
-            certification={certification}
-            award={award}
-          />
-        </PDFViewer>
+      <div className="w-min">
+        <BlobProvider
+          document={
+            <Content
+              name={name}
+              email={email}
+              phoneNumber={phoneNumber}
+              title={title}
+              links={links}
+              location={location}
+              skills={skills}
+              experience={experience}
+              education={education}
+              fileName={""}
+              project={project}
+              certification={certification}
+              award={award}
+            />
+          }
+        >
+          {({ blob, url, loading, error }) => {
+            return (
+              <div>
+                <ReactDocument file={url} onLoadSuccess={onDocumentLoadSuccess}>
+                  <ReactPage pageNumber={pageNumber} />
+                </ReactDocument>
+                <div className="flex items-center w-full justify-between mt-2">
+                  <button
+                    onClick={() => setPageNumber(pageNumber + -1)}
+                    className="p-2 bg-indigo-300 text-white rounded"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={4}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M15.75 19.5L8.25 12l7.5-7.5"
+                      />
+                    </svg>
+                  </button>
+                  <p>
+                    {pageNumber} of {numPages}
+                  </p>
+                  <button
+                    onClick={() => setPageNumber(pageNumber + 1)}
+                    className="p-2 bg-indigo-300 text-white rounded"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      strokeWidth={5}
+                      stroke="currentColor"
+                      className="w-6 h-6"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                      />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            );
+          }}
+        </BlobProvider>
       </div>
       <DownloadLink
         fileName={fileName}
@@ -342,7 +424,7 @@ export const DownloadLink = ({
   const { t } = useTranslation();
   return (
     <PDFDownloadLink
-      className="bg-indigo-300 rounded text-white mb-3 p-3 mt-3 w-full text-center"
+      className="bg-indigo-300 rounded text-white mb-3 p-3 mt-3 mb-3 w-full text-center"
       document={
         <Content
           name={name}

@@ -307,7 +307,7 @@ export const ModernResume = () => {
     <div className="flex flex-col items-center">
       <h2 className="text-2xl md:text-2xl lg:text-4xl">{t("File Name")}:</h2>
       <input type="text" onChange={handleFileName} />
-      <div className="w-min">
+      <div className="w-full">
         <BlobProvider
           document={
             <Content

@@ -28,3 +28,23 @@ button{
 .resume-type{
   @apply p-10 text-indigo-300 rounded-lg border-2 border-indigo-300 hover:bg-indigo-50 transition duration-500 hover:scale-110 
 }
+
+
+.react-pdf__Page{
+  width: 100% !important;
+  height: 100% !important;
+}
+.react-pdf__Page__canvas{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.textLayer{
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.annotationLayer{
+  width: 100% !important;
+  height: 100% !important;
+}

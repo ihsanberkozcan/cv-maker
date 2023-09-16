@@ -19,12 +19,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   import.meta.url
 ).toString();
 
-const options = {
-  cMapUrl: "/cmaps/",
-  standardFontDataUrl: "/standard_fonts/",
-};
-
-type PDFFile = string | File | null;
 
 import { useTranslation } from "react-i18next";
 
@@ -333,7 +327,7 @@ export const ModernResume = () => {
             />
           }
         >
-          {({ blob, url, loading, error }) => {
+          {({ url}) => {
             return (
               <div>
                 <ReactDocument file={url} onLoadSuccess={onDocumentLoadSuccess}>
@@ -424,7 +418,7 @@ export const DownloadLink = ({
   const { t } = useTranslation();
   return (
     <PDFDownloadLink
-      className="bg-indigo-300 rounded text-white mb-3 p-3 mt-3 mb-3 w-full text-center"
+      className="bg-indigo-300 rounded text-white p-3 mt-3 mb-3 w-full text-center"
       document={
         <Content
           name={name}

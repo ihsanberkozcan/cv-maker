@@ -4,7 +4,6 @@ import {
   Text,
   View,
   StyleSheet,
-
   PDFDownloadLink,
   Font,
   BlobProvider,
@@ -18,8 +17,6 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.js",
   import.meta.url
 ).toString();
-
-
 
 import { useTranslation } from "react-i18next";
 
@@ -343,48 +340,57 @@ export const ClassicResume = () => {
                 <ReactDocument file={url} onLoadSuccess={onDocumentLoadSuccess}>
                   <ReactPage pageNumber={pageNumber} />
                 </ReactDocument>
-                <div className="flex items-center w-full justify-between mt-2">
-                  <button
-                    onClick={() => setPageNumber(pageNumber + -1)}
-                    className="p-2 bg-indigo-300 text-white rounded"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={4}
-                      stroke="currentColor"
-                      className="w-6 h-6"
+                <div className="flex items-center justify-between my-3 mx-auto ">
+                  {pageNumber !== 1 ? (
+                    <button
+                      onClick={() => setPageNumber(pageNumber + -1)}
+                      className="p-2 bg-indigo-300 text-white rounded"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M15.75 19.5L8.25 12l7.5-7.5"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={4}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M15.75 19.5L8.25 12l7.5-7.5"
+                        />
+                      </svg>
+                    </button>
+                  ) : (
+                    <div className="w-[40px]"></div>
+                  )}
+
                   <p>
                     {pageNumber} of {numPages}
                   </p>
-                  <button
-                    onClick={() => setPageNumber(pageNumber + 1)}
-                    className="p-2 bg-indigo-300 text-white rounded"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      strokeWidth={5}
-                      stroke="currentColor"
-                      className="w-6 h-6"
+                  {pageNumber !== numPages ? (
+                    <button
+                      onClick={() => setPageNumber(pageNumber + 1)}
+                      className="p-2 bg-indigo-300 text-white rounded"
                     >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                      />
-                    </svg>
-                  </button>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        strokeWidth={5}
+                        stroke="currentColor"
+                        className="w-6 h-6"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                        />
+                      </svg>
+                    </button>
+                  ) : (
+                    <div className="w-[40px]"></div>
+                  )}
                 </div>
               </div>
             );

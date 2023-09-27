@@ -13,8 +13,7 @@ function ResumeType() {
   const [modernButtonTextStyle, setModernButtonTextStyle] =
     useState<String>("");
   useEffect(() => {
-    console.log("Burdayım");
-    console.log(resumeType);
+  
     if (resumeType === "classic") {
       setClassicButtonStyle("bg-indigo-300 hover:bg-indigo-300");
       setClassicButtonTextStyle("text-white");

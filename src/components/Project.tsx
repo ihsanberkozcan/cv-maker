@@ -62,12 +62,14 @@ function Project() {
           </div>
           {t("Project Title")}:
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateProject(e, i, "projectTitle")}
             value={project[i].projectTitle}
           />
           {t("Project Link")}:
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateProject(e, i, "projectLink")}
             value={project[i].projectLink}

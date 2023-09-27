@@ -62,6 +62,7 @@ function Award() {
           </div>
           {t("Award Title")}:
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateAward(e, i, "awardTitle")}
             value={award[i].awardTitle}

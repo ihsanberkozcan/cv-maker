@@ -22,7 +22,7 @@ function UserInput({
       <div className="text-2xl md:text-2xl lg:text-4xl mb-3">{t(title)}:</div>
       {inputType === "short" ? (
         <input
-          className="mt-3 w-full rounded p-2"
+          className="mt-3 w-full rounded p-2 textInput"
           placeholder={inputPlaceholder}
           value={inputValue}
           onChange={(e) => handlechange(e, keyName)}

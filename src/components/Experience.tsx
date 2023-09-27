@@ -91,12 +91,14 @@ function Experience() {
           </div>
           {t("Company Name")}:
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateExperience(e, i, "employer")}
             value={experience[i].employer}
           />
           {t("Job Title")}:
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateExperience(e, i, "jobTitle")}
             value={experience[i].jobTitle}
@@ -123,6 +125,7 @@ function Experience() {
           />
           <div className="w-full"> {t("Location")}:</div>
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateExperience(e, i, "location")}
             value={experience[i].location}

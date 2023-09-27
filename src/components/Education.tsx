@@ -89,6 +89,7 @@ function Education() {
           </div>
           {t("Institute Name")}:
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "instituteName")}
             value={education[i].instituteName}
@@ -109,6 +110,7 @@ function Education() {
           </select>
           {t("Field of Study")}:
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "fieldOfStudy")}
             value={education[i].fieldOfStudy}
@@ -135,12 +137,14 @@ function Education() {
           />
           <div className="w-full">{t("Location")}:</div>
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "location")}
             value={education[i].location}
           />
           {t("Scores")}:
           <input
+            className="textInput"
             type="text"
             onChange={(e) => handleUpdateEducation(e, i, "scores")}
             value={education[i].scores}

@@ -66,6 +66,7 @@ function Certification() {
           </div>
           {t("Certificate Title")}:
           <input
+          className="textInput"
             type="text"
             onChange={(e) =>
               handleUpdateCertification(e, i, "certificateTitle")
@@ -74,12 +75,14 @@ function Certification() {
           />
           {t("Issued By")}:
           <input
+           className="textInput"
             type="text"
             onChange={(e) => handleUpdateCertification(e, i, "IssuedBy")}
             value={certification[i].IssuedBy}
           />
           {t("Certificate Link")}:
           <input
+           className="textInput"
             type="text"
             onChange={(e) => handleUpdateCertification(e, i, "certificateLink")}
             value={certification[i].certificateLink}

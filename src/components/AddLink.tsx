@@ -66,7 +66,7 @@ function AddLink() {
           </select>
 
           <input
-            className="rounded p-2 mr-2"
+            className="rounded p-2 mr-2 textInput"
             onChange={(e) => handleLinkChange(e, i)}
             value={myLinks[i].link}
           />

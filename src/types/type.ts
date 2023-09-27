@@ -44,6 +44,13 @@ export interface awardType {
   awardDescription?: string;
 }
 
+
+export interface resumeColorType {
+  headerBackground: string;
+  headerText: string;
+  sectionTitleText: string;
+  textColor: string;
+}
 export interface userDataType {
   fileName?: string;
   name: string;
@@ -62,6 +69,11 @@ export interface userDataType {
 
 export interface UpdateDataPayload {
   key: keyof userDataType;
+  value: any;
+}
+
+export interface UpdateColorPayload {
+  key: keyof resumeColorType;
   value: any;
 }
 

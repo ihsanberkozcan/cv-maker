@@ -152,6 +152,8 @@ export const Content = ({
     fontStyle: "normal",
   });
   const { t } = useTranslation();
+  const cvsub: any = [email, phoneNumber, location];
+  const cvsubfilter = cvsub.filter((a: string) => a !== "");
   return (
     <Document>
       <Page size="A4" style={styles.page}>
@@ -165,11 +167,16 @@ export const Content = ({
           <Text style={styles.title}>{name}</Text>
           <Text style={styles.jobTitle}>{title}</Text>
           <View style={styles.cvSubPart}>
-            <Text style={styles.text}>{email}</Text>
-            <Text style={styles.text}>&nbsp;|&nbsp;</Text>
-            <Text style={styles.text}>{phoneNumber}</Text>
-            <Text style={styles.text}>&nbsp;|&nbsp;</Text>
-            <Text style={styles.text}>{location}</Text>
+            {cvsubfilter?.map((_sub: string, index: number) => (
+              <>
+                <Text style={styles.text}>{_sub}</Text>
+                {index !== cvsubfilter.length - 1 ? (
+                  <Text style={styles.text}>&nbsp;|&nbsp;</Text>
+                ) : (
+                  <></>
+                )}
+              </>
+            ))}
           </View>
           {links.length ? (
             <View style={{ ...styles.links }}>

@@ -14,7 +14,8 @@ import MainPage from "./components/MainPage";
 import ResumeStyle from "./components/ResumeStyle";
 import { ModernResume } from "./components/ModernResume";
 import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import GiveFeedback from "./components/GiveFeedback";
 function App() {
   const { currentStep, lastStep } = useSelector((state: any) => state.step);
   const { resumeType } = useSelector((state: any) => state.resumeType);
@@ -157,6 +158,7 @@ function App() {
   };
   return (
     <div className="flex flex-col h-screen relative">
+      <GiveFeedback />
       <ToastContainer
         position="top-center"
         autoClose={5000}

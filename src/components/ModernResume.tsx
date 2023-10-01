@@ -479,14 +479,14 @@ export const ModernResume = () => {
   return (
     <div className="flex flex-col items-center">
       <div className="w-full">
-        <h2 className="text-2xl md:text-2xl lg:text-4xl py-4">
+        <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold py-4">
           {t("File Name")}:
         </h2>
         <input className="textInput" type="text" onChange={handleFileName} />
       </div>
 
       <div className="w-full">
-        <h2 className="text-2xl md:text-2xl lg:text-4xl py-4">{t("Color")}:</h2>
+        <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold py-4">{t("Color")}:</h2>
       </div>
 
       <div className="flex w-full justify-between space-x-2 mb-2">
@@ -647,7 +647,7 @@ export const DownloadLink = ({
   const { t } = useTranslation();
   return (
     <PDFDownloadLink
-      className="bg-indigo-300 rounded text-white p-3 mt-3 mb-3 w-full text-center"
+      className="bg-indigo-300 rounded text-white p-3 mt-3 mb-12 w-full text-center"
       document={
         <Content
           name={name}

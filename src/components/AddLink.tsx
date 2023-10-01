@@ -97,7 +97,7 @@ function AddLink() {
 
   return (
     <div className="h-full overflow-auto">
-      <div className="text-2xl md:text-2xl lg:text-4xl mb-3">Link:</div>
+      <div className="text-2xl md:text-2xl lg:text-4xl font-semibold mb-3">Link:</div>
       <ul className="list-none">{renderLink()}</ul>
       <button
         className="bg-indigo-300 rounded text-white p-3 mt-5 w-full"

@@ -65,8 +65,8 @@ function Experience() {
     for (let i = 0; i < experience.length; i++) {
       content.push(
         <div>
-          <div className="flex justify-between mb-2">
-            <h2 className="text-2xl md:text-2xl lg:text-4xl">
+          <div className="flex justify-between mt-5 items-center">
+            <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold">
               {i + 1}. {t("Experience")}:
             </h2>
             <button
@@ -143,10 +143,10 @@ function Experience() {
 
   return (
     <div>
-      {renderExperience()}
+      <div className="-mt-5">{renderExperience()}</div>
 
       <button
-        className="bg-indigo-300 rounded text-white p-3 mt-5 mb-5 w-full"
+        className="bg-indigo-300 rounded text-white p-3 mt-5 mb-12 w-full"
         onClick={() => addNewExperience()}
       >
         {t("Add New Experience")}

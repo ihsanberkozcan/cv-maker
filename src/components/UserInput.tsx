@@ -19,7 +19,7 @@ function UserInput({
   };
   return (
     <div>
-      <div className="text-2xl md:text-2xl lg:text-4xl mb-3">{t(title)}:</div>
+      <div className="text-2xl md:text-2xl lg:text-4xl font-semibold mb-3">{t(title)}:</div>
       {inputType === "short" ? (
         <input
           className="mt-3 w-full rounded p-2 textInput"

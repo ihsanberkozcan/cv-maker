@@ -63,8 +63,8 @@ function Education() {
     for (let i = 0; i < education.length; i++) {
       content.push(
         <div>
-          <div className="flex justify-between mb-2">
-            <h2 className="text-2xl md:text-2xl lg:text-4xl">
+          <div className="flex justify-between mt-5 items-center">
+            <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold">
               {i + 1}. {t("Education")}:
             </h2>
             <button
@@ -157,9 +157,9 @@ function Education() {
 
   return (
     <div>
-      <>{renderEducation()}</>
+      <div className="-mt-5">{renderEducation()}</div>
       <button
-        className="bg-indigo-300 rounded text-white p-3 mt-5 mb-5 w-full"
+        className="bg-indigo-300 rounded text-white p-3 mt-5 mb-12 w-full"
         onClick={() => addNewEducation()}
       >
         {t("Add New Education")}

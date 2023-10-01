@@ -319,7 +319,7 @@ export const ClassicResume = () => {
   };
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-2xl md:text-2xl lg:text-4xl">{t("File Name")}:</h2>
+      <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold">{t("File Name")}:</h2>
       <input className="textInput" type="text" onChange={handleFileName} />
       <div>
         <BlobProvider
@@ -441,7 +441,7 @@ export const DownloadLink = ({
   const { t } = useTranslation();
   return (
     <PDFDownloadLink
-      className="bg-indigo-300 rounded text-white p-3 mt-3 mb-3 w-full text-center"
+      className="bg-indigo-300 rounded text-white p-3 mt-3 mb-12 w-full text-center"
       document={
         <Content
           name={name}

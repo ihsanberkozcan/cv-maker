@@ -24,7 +24,7 @@ export default function GiveFeedback() {
     }
   };
   return (
-    <div className="absolute right-10 bottom-0 z-50">
+    <div className="fixed right-10 bottom-0 z-50">
       {feedbackComponent ? (
         <Feedback
           closeFeedback={closeFeedback}

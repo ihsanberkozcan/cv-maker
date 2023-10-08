@@ -157,47 +157,49 @@ function App() {
     }
   };
   return (
-    <div className="flex flex-col h-screen relative">
+    <div className="h-full">
       <GiveFeedback />
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      <div
-        className={`w-full h-full p-6 md:p-8 lg:p-10 overflow-x-hidden bg-[#F9F7F7] ${
-          currentStep !== 0 ? "mt-20 md:mt-20 lg:mt-16" : ""
-        }`}
-      >
-        {renderStep(currentStep)}
-      </div>
-      {currentStep !== 0 ? (
-        <div className="w-full flex justify-between px-4 md:px-5 lg:px-10 py-3 fixed top-0 items-center bg-white drop-shadow-md">
-          {currentStep == 0 ? null : <BackButton />}
-          {currentStep !== 0 ? (
-            <>
-              {currentStep}/{lastStep}
-            </>
-          ) : (
-            <></>
-          )}
-
-          {currentStep !== lastStep && currentStep !== 0 ? (
-            <NextButton />
-          ) : (
-            <div className="w-[56px]"></div>
-          )}
+      <div className="flex flex-col h-screen relative">
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
+        <div
+          className={`w-full h-full p-6 md:p-8 lg:p-10 overflow-x-hidden bg-[#F9F7F7] ${
+            currentStep !== 0 ? "mt-20 md:mt-20 lg:mt-16" : ""
+          }`}
+        >
+          {renderStep(currentStep)}
         </div>
-      ) : (
-        <></>
-      )}
+        {currentStep !== 0 ? (
+          <div className="w-full flex justify-between px-4 md:px-5 lg:px-10 py-3 fixed top-0 items-center bg-white drop-shadow-md">
+            {currentStep == 0 ? null : <BackButton />}
+            {currentStep !== 0 ? (
+              <>
+                {currentStep}/{lastStep}
+              </>
+            ) : (
+              <></>
+            )}
+
+            {currentStep !== lastStep && currentStep !== 0 ? (
+              <NextButton />
+            ) : (
+              <div className="w-[56px]"></div>
+            )}
+          </div>
+        ) : (
+          <></>
+        )}
+      </div>
     </div>
   );
 }

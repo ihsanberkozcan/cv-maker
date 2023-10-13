@@ -109,8 +109,8 @@ const userData = createSlice({
     updateExperience(state, action: PayloadAction<experienceType>) {
       const { id } = action.payload;
       const experience = [...state.experience];
-      experience.map((obj: { [key: string]: string | number | Date }) => {
-        if (obj.id === id) {
+      experience.map((obj: { [key: string]: string | number | Date },index:number) => {
+        if (index === id) {
           const secondKey = Object.keys(action.payload)[1];
           obj[secondKey] = Object.values(action.payload)[1];
         }
@@ -132,8 +132,8 @@ const userData = createSlice({
     updateEducation(state, action: PayloadAction<educationType>) {
       const { id } = action.payload;
       const education = [...state.education];
-      education.map((obj: { [key: string]: string | number | Date }) => {
-        if (obj.id === id) {
+      education.map((obj: { [key: string]: string | number | Date },index:number) => {
+        if (index=== id) {
           const secondKey = Object.keys(action.payload)[1];
           obj[secondKey] = Object.values(action.payload)[1];
         }
@@ -155,8 +155,8 @@ const userData = createSlice({
     updateProject(state, action: PayloadAction<projectType>) {
       const { id } = action.payload;
       const project = [...state.project];
-      project.map((obj: { [key: string]: string | number | Date }) => {
-        if (obj.id === id) {
+      project.map((obj: { [key: string]: string | number | Date },index:number) => {
+        if (index === id) {
           const secondKey = Object.keys(action.payload)[1];
           obj[secondKey] = Object.values(action.payload)[1];
         }
@@ -178,8 +178,8 @@ const userData = createSlice({
     updateCertification(state, action: PayloadAction<certificationType>) {
       const { id } = action.payload;
       const certification = [...state.certification];
-      certification.map((obj: { [key: string]: string | number | Date }) => {
-        if (obj.id === id) {
+      certification.map((obj: { [key: string]: string | number | Date },index:number) => {
+        if (index === id) {
           const secondKey = Object.keys(action.payload)[1];
           obj[secondKey] = Object.values(action.payload)[1];
         }
@@ -201,8 +201,8 @@ const userData = createSlice({
     updateAward(state, action: PayloadAction<educationType>) {
       const { id } = action.payload;
       const award = [...state.award];
-      award.map((obj: { [key: string]: string | number | Date }) => {
-        if (obj.id === id) {
+      award.map((obj: { [key: string]: string | number | Date },index:number) => {
+        if (index === id) {
           const secondKey = Object.keys(action.payload)[1];
           obj[secondKey] = Object.values(action.payload)[1];
         }

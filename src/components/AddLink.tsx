@@ -58,7 +58,7 @@ function AddLink() {
         >
           <li className="flex">
             <select
-              className="rounded p-2 h-[48px] mr-3  border-2 bg-white"
+              className="rounded p-2 h-[48px] mr-3 w-1/2 border-2 bg-white"
               onChange={(e) => handleWebsiteNameChange(e, i)}
               value={myLinks[i].websiteName}
             >
@@ -103,7 +103,7 @@ function AddLink() {
 
   return (
     <div className="h-full overflow-auto">
-      <div className="p-10 bg-white border rounded-xl mt-5 shadow-lg">
+      <div className="p-5 md:p-6 md:p-10 bg-white border rounded-xl mt-5 shadow-lg">
         <div className="text-lg md:text-xl lg:text-2xl font-semibold mb-1 mb-3">
           Link
         </div>

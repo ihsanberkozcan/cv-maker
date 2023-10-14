@@ -173,8 +173,8 @@ function App() {
           theme="light"
         />
         <div
-          className={`w-full h-full py-8 px-8 md:px-24 md:py-18 lg:px-72 overflow-x-hidden bg-[#F9F7F7] ${
-            currentStep !== 0 ? "mt-20 md:mt-20 lg:mt-16" : ""
+          className={`w-full h-full py-3 md:py-6 px-8 md:px-24 lg:px-72 overflow-x-hidden bg-[#F9F7F7] ${
+            currentStep !== 0 ? "mt-20" : ""
           }`}
         >
           {renderStep(currentStep)}

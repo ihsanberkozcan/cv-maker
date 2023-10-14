@@ -68,7 +68,7 @@ function Education() {
           animate={{ opacity: 1}}
           transition={{ duration: 0.5 }}
         >
-          <div className="p-10 bg-white border rounded-xl mt-5 shadow-lg">
+          <div className="p-6 md:p-10 bg-white border rounded-xl mt-5 shadow-lg">
             <div className="flex justify-between items-center mb-1">
               <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-1">
                 {i + 1}. {t("Education")}

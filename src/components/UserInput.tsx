@@ -18,7 +18,7 @@ function UserInput({
     dispatch(updateData({ key: keyName, value: e.target.value }));
   };
   return (
-    <div className="p-10 bg-white border rounded-xl mt-5 shadow-lg">
+    <div className="p-6 md:p-10 bg-white border rounded-xl mt-5 shadow-lg">
       <div className="text-lg md:text-xl lg:text-2xl font-semibold mb-1">{t(title)}</div>
       {inputType === "short" ? (
         <input

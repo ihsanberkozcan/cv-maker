@@ -319,7 +319,7 @@ export const ClassicResume = () => {
   };
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold">{t("File Name")}:</h2>
+      <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold">{t("File Name")}</h2>
       <input className="textInput" type="text" onChange={handleFileName} />
       <div>
         <BlobProvider

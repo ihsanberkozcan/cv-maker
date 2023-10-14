@@ -173,7 +173,7 @@ function App() {
           theme="light"
         />
         <div
-          className={`w-full h-full p-6 md:p-8 lg:p-10 overflow-x-hidden bg-[#F9F7F7] ${
+          className={`w-full h-full py-8 px-8 md:px-24 md:py-18 lg:px-72 overflow-x-hidden bg-[#F9F7F7] ${
             currentStep !== 0 ? "mt-20 md:mt-20 lg:mt-16" : ""
           }`}
         >

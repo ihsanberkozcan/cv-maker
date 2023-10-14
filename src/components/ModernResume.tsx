@@ -478,44 +478,48 @@ export const ModernResume = () => {
   };
   return (
     <div className="flex flex-col items-center">
-      <div className="w-full">
-        <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold py-4">
-          {t("File Name")}:
-        </h2>
-        <input className="textInput" type="text" onChange={handleFileName} />
-      </div>
+      <div className="w-full p-10 bg-white border rounded-xl mt-5 shadow-lg">
+        <div className="w-full">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-1">
+            {t("File Name")}
+          </h2>
+          <input className="textInput" type="text" onChange={handleFileName} />
+        </div>
 
-      <div className="w-full">
-        <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold py-4">{t("Color")}:</h2>
-      </div>
+        <div className="w-full">
+          <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-1">
+            {t("Color")}
+          </h2>
+        </div>
 
-      <div className="flex w-full justify-between space-x-2 mb-2">
-        <ColorPicker
-          text="Header Background"
-          defaultColor={headerBackground}
-          mykey="headerBackground"
-          ColorPickerPossition="left"
-        />
-        <ColorPicker
-          text="Header Text"
-          defaultColor={headerText}
-          mykey="headerText"
-          ColorPickerPossition="left"
-        />
-        <ColorPicker
-          text="Section Title Text"
-          defaultColor={sectionTitleText}
-          mykey="sectionTitleText"
-          ColorPickerPossition="right"
-        />
-        <ColorPicker
-          text="Text"
-          defaultColor={textColor}
-          mykey="textColor"
-          ColorPickerPossition="right"
-        />
+        <div className="flex w-full justify-between space-x-2 mb-2">
+          <ColorPicker
+            text="Header Background"
+            defaultColor={headerBackground}
+            mykey="headerBackground"
+            ColorPickerPossition="left"
+          />
+          <ColorPicker
+            text="Header Text"
+            defaultColor={headerText}
+            mykey="headerText"
+            ColorPickerPossition="left"
+          />
+          <ColorPicker
+            text="Section Title Text"
+            defaultColor={sectionTitleText}
+            mykey="sectionTitleText"
+            ColorPickerPossition="right"
+          />
+          <ColorPicker
+            text="Text"
+            defaultColor={textColor}
+            mykey="textColor"
+            ColorPickerPossition="right"
+          />
+        </div>
       </div>
-      <div>
+      <div className="mt-10">
         <BlobProvider
           document={
             <Content

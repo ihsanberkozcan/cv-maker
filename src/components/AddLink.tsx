@@ -1,7 +1,7 @@
 import { deleteLink, updateLink } from "../stores/userData";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
-
+import { motion } from "framer-motion";
 function AddLink() {
   const { links: myLinks } = useSelector((state: any) => state.userData);
   const dispatch = useDispatch();
@@ -51,45 +51,51 @@ function AddLink() {
 
     for (let i = 0; i < myLinks.length; i++) {
       content.push(
-        <li className="flex">
-          <select
-            className="rounded p-2 h-[48px] mr-3  border-2 bg-white"
-            onChange={(e) => handleWebsiteNameChange(e, i)}
-            value={myLinks[i].websiteName}
-          >
-            <option value="">{t("Please Select")}</option>
-            <option value="GitHub">GitHub</option>
-            <option value="GitLab">GitLab</option>
-            <option value="LinkedIn">LinkedIn</option>
-            <option value="Website">Website</option>
-            <option value="Medium">Medium</option>
-          </select>
-
-          <input
-            className="rounded p-2 mr-2 textInput"
-            onChange={(e) => handleLinkChange(e, i)}
-            value={myLinks[i].link}
-          />
-          <button
-            className="bg-indigo-300 rounded text-white mb-3 p-3"
-            onClick={() => deleteWebsiteLink(i)}
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              strokeWidth={1.5}
-              stroke="currentColor"
-              className="w-6 h-6"
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1}}
+          transition={{ duration: 0.5 }}
+        >
+          <li className="flex">
+            <select
+              className="rounded p-2 h-[48px] mr-3  border-2 bg-white"
+              onChange={(e) => handleWebsiteNameChange(e, i)}
+              value={myLinks[i].websiteName}
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
-        </li>
+              <option value="">{t("Please Select")}</option>
+              <option value="GitHub">GitHub</option>
+              <option value="GitLab">GitLab</option>
+              <option value="LinkedIn">LinkedIn</option>
+              <option value="Website">Website</option>
+              <option value="Medium">Medium</option>
+            </select>
+
+            <input
+              className="rounded p-2 mr-2 textInput"
+              onChange={(e) => handleLinkChange(e, i)}
+              value={myLinks[i].link}
+            />
+            <button
+              className="bg-indigo-300 rounded text-white mb-3 p-3"
+              onClick={() => deleteWebsiteLink(i)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </li>
+        </motion.div>
       );
     }
     return content;
@@ -97,8 +103,12 @@ function AddLink() {
 
   return (
     <div className="h-full overflow-auto">
-      <div className="text-2xl md:text-2xl lg:text-4xl font-semibold mb-3">Link:</div>
-      <ul className="list-none">{renderLink()}</ul>
+      <div className="p-10 bg-white border rounded-xl mt-5 shadow-lg">
+        <div className="text-lg md:text-xl lg:text-2xl font-semibold mb-1 mb-3">
+          Link
+        </div>
+        <ul className="list-none">{renderLink()}</ul>
+      </div>
       <button
         className="bg-indigo-300 rounded text-white p-3 mt-5 w-full"
         onClick={() => addNewLink()}

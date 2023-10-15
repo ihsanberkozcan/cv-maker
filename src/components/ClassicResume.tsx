@@ -61,7 +61,10 @@ const styles = StyleSheet.create({
     width: "100%",
   },
   links: {
+    flexWrap: "wrap",
     flexDirection: "row",
+    maxWidth: "100%",
+    justifyContent: "center",
   },
   jobTitle: {
     fontSize: 18,

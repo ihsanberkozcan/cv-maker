@@ -103,11 +103,11 @@ function AddLink() {
 
   return (
     <div className="h-full overflow-auto">
-      <div className="p-5 md:p-6 md:p-10 bg-white border rounded-xl mt-5 shadow-lg">
-        <div className="text-lg md:text-xl lg:text-2xl font-semibold mb-1 mb-3">
+      <div className="p-6 md:p-10 bg-white border rounded-xl mt-5 shadow-lg">
+        <div className="text-lg md:text-xl lg:text-2xl font-semibold mb-1">
           Link
         </div>
-        <ul className="list-none">{renderLink()}</ul>
+        <ul className="list-none mt-3">{renderLink()}</ul>
       </div>
       <button
         className="bg-indigo-300 rounded text-white p-3 mt-5 w-full"

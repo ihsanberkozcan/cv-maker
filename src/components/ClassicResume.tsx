@@ -322,8 +322,12 @@ export const ClassicResume = () => {
   };
   return (
     <div className="flex flex-col items-center">
-      <h2 className="text-2xl md:text-2xl lg:text-4xl font-semibold">{t("File Name")}</h2>
-      <input className="textInput" type="text" onChange={handleFileName} />
+      <div className="p-6 md:p-10 bg-white border rounded-xl mt-5 shadow-lg w-full mb-5">
+        <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-1">
+          {t("File Name")}
+        </h2>
+        <input className="textInput" type="text" onChange={handleFileName} />
+      </div>
       <div>
         <BlobProvider
           document={

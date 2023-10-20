@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+
+body{
+  @apply bg-[#F9F7F7]
+}
 iframe {
   width: 100%;
   height: 100%;

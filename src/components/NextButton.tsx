@@ -25,7 +25,7 @@ function NextButton() {
 
   return (
     <button
-      className="text-white p-4 h-full bg-indigo-300 rounded-lg"
+      className="text-white p-3 h-full bg-indigo-300 rounded-xl"
       onClick={handleNextButton}
     >
       <svg

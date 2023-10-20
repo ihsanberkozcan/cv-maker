@@ -16,6 +16,7 @@ import { ModernResume } from "./components/ModernResume";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import GiveFeedback from "./components/GiveFeedback";
+import ProgressBar from "./components/ProgressBar";
 function App() {
   const { currentStep, lastStep } = useSelector((state: any) => state.step);
   const { resumeType } = useSelector((state: any) => state.resumeType);
@@ -180,21 +181,23 @@ function App() {
           {renderStep(currentStep)}
         </div>
         {currentStep !== 0 ? (
-          <div className="w-full flex justify-between px-4 md:px-5 lg:px-10 py-3 fixed top-0 items-center bg-white drop-shadow-md">
-            {currentStep == 0 ? null : <BackButton />}
-            {currentStep !== 0 ? (
-              <>
-                {currentStep}/{lastStep}
-              </>
-            ) : (
-              <></>
-            )}
+          <div className=" flex justify-center">
+            <div className="w-11/12 mt-5 flex justify-between px-4 md:px-5 py-3 fixed top-0 items-center rounded-xl border bg-white shadow">
+              {currentStep == 0 ? null : <BackButton />}
+              {currentStep !== 0 ? (
+                <div className="flex-1">
+                  <ProgressBar currentStep={currentStep} lastStep={lastStep} />
+                </div>
+              ) : (
+                <></>
+              )}
 
-            {currentStep !== lastStep && currentStep !== 0 ? (
-              <NextButton />
-            ) : (
-              <div className="w-[56px]"></div>
-            )}
+              {currentStep !== lastStep && currentStep !== 0 ? (
+                <NextButton />
+              ) : (
+                <div className="w-[48px]"></div>
+              )}
+            </div>
           </div>
         ) : (
           <></>

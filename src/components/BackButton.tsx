@@ -8,7 +8,7 @@ function BackButton() {
   };
 
   return (
-    <button className="text-white p-4 h-full bg-indigo-300 rounded-lg" onClick={handleBackButton}>
+    <button className="text-white p-3 h-full bg-indigo-300 rounded-xl" onClick={handleBackButton}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         fill="none"

@@ -3,10 +3,11 @@ import ClassicImage from "../assets/Classic.png";
 import ModernImage from "../assets/Modern.png";
 import { useDispatch, useSelector } from "react-redux";
 import { updateResumeType } from "../stores/resumeType";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 import toast from "react-hot-toast";
 function ResumeType() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { resumeType } = useSelector((state: any) => state.resumeType);
   const [classicButtonStyle, setClassicButtonStyle] = useState<String>("");
   const [classicButtonTextStyle, setClassicButtonTextStyle] =
@@ -58,7 +59,7 @@ function ResumeType() {
             alt=""
           />
           <div className={`text-lg font-medium ${classicButtonTextStyle}`}>
-            Classic
+            {t("Classic")}
           </div>
         </button>
         <button
@@ -72,7 +73,7 @@ function ResumeType() {
           />
 
           <div className={`text-lg font-medium ${modernButtonTextStyle}`}>
-            Modern
+            {t("Modern")}
           </div>
         </button>
       </div>

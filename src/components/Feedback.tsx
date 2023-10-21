@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 import { Dispatch, SetStateAction, useRef } from "react";
-
+import { useTranslation } from "react-i18next";
 
 interface propsType {
   closeFeedback: () => void;
@@ -24,6 +24,8 @@ export default function Feedback({
   feedbackSended,
   setfeedbackRate,
 }: propsType) {
+
+  const { t } = useTranslation();
   const button1 = useRef(null);
   const button2 = useRef(null);
   const button3 = useRef(null);
@@ -57,7 +59,7 @@ export default function Feedback({
         {feedbackSended !== true ? (
           <div>
             <div className="text-lg font-medium mt-3">
-              Please rate your overall experience
+              {t("Please rate your overall experience")}
             </div>
             <div className="w-full mt-4 flex justify-center">
               <button
@@ -117,14 +119,14 @@ export default function Feedback({
                 onClick={handleSubmit}
                 className="text-indigo-300 mt-3 py-2 px-5 font-semibold hover:bg-indigo-50 rounded-full w-min"
               >
-                Submit
+                {t("Submit")}
               </button>
             </div>
           </div>
         ) : (
           <div className="w-[274px] h-[154px] flex justify-center items-center">
             <div className="text-xl text-center">
-              Thank you for the feedback
+              {t("Thank you for the feedback")}
             </div>
           </div>
         )}

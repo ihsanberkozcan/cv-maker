@@ -488,7 +488,7 @@ export const ModernResume = () => {
 
         <div className="w-full">
           <h2 className="text-lg md:text-xl lg:text-2xl font-semibold mb-1">
-            {t("Color")}
+            {t("Colors")}
           </h2>
         </div>
 

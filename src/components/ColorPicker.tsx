@@ -4,17 +4,20 @@ import { useOnClickOutside } from "../hooks/hooks";
 import { useDispatch } from "react-redux";
 import { updateResumeColor } from "../stores/resumeColor";
 import { resumeColorType } from "../types/type";
+import { useTranslation } from "react-i18next";
+
 export default function ColorPicker({
   text,
   defaultColor,
   mykey,
-  ColorPickerPossition
+  ColorPickerPossition,
 }: {
   text: string;
   defaultColor: string;
   mykey: keyof resumeColorType;
-  ColorPickerPossition: "left" | "right" 
+  ColorPickerPossition: "left" | "right";
 }) {
+  const { t } = useTranslation();
   const [background, setBackground] = useState<string>(defaultColor);
   const [displayColorPicker, setDisplayColorPicker] = useState<boolean>(false);
   const dispatch = useDispatch();
@@ -51,7 +54,7 @@ export default function ColorPicker({
         }}
         className="text-white p-2 mb-3 rounded-md text-center w-full h-full text-xs font-semibold font-mon shadow-md"
       >
-        {text}
+        {t(text)}
       </button>
       {displayColorPicker ? (
         <div className={`absolute z-10 ${ColorPickerPossition}-0`} ref={ref}>

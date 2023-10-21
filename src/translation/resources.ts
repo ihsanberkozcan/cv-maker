@@ -46,7 +46,23 @@ export const resources = {
         "File Name": "File Name",
         "Download":"Download",
         "Loading document...":"Loading document...",
-        "Please select a resume style":"Please select a resume style"
+        "Please select a resume style":"Please select a resume style",
+        "Classic":"Classic",
+        "Modern":"Modern",
+        "Feedback":"Feedback",
+        "Please rate your overall experience":"Please rate your overall experience",
+        "Associate's Degree":"Associate's Degree",
+        "Bachelor's Degree":"Bachelor's Degree",
+        "Master's Degree":"Master's Degree",
+        "Doctorate (Ph.D.) Degree":"Doctorate (Ph.D.) Degree",
+        "Submit":"Submit",
+        "Thank you for the feedback":"Thank you for the feedback",
+        "Header Background":"Header Background",
+        "Header Text":"Header Text",
+        "Section Title Text":"Section Title Text",
+        "Text":"Text",
+        "Colors":"Colors"
+
       },
     },
     tr: {
@@ -96,7 +112,22 @@ export const resources = {
         "File Name": "Dosya Adı",
         "Download":"İndir",
         "Loading document...":"Belge yükleniyor",
-        "Please select a resume style":"Lütfen bir özgeçmiş stili seçin"
+        "Please select a resume style":"Lütfen bir özgeçmiş stili seçin",
+        "Classic":"Klasik",
+        "Modern":"Modern",
+        "Feedback":"Geri bildirim",
+        "Please rate your overall experience":"Lütfen genel deneyiminizi değerlendirin",
+        "Associate's Degree":"Önlisans Derecesi",
+        "Bachelor's Degree":"Lisans Derecesi",
+        "Master's Degree":"Yüksek Lisans Derecesi",
+        "Doctorate (Ph.D.) Degree":"Doktora Derecesi",
+        "Thank you for the feedback":"Geri bildiriminiz için teşekkür ederiz",
+        "Submit":"Gönder",
+        "Header Background":"Başlık Arka Planı",
+        "Header Text":"Başlık Metni",
+        "Section Title Text":"Bölüm Başlık Metni",
+        "Text":"Metin",
+        "Colors":"Renkler"
         }
     },
   };

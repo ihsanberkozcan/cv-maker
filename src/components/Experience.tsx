@@ -67,7 +67,7 @@ function Experience() {
       content.push(
         <motion.div
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1}}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
         >
           <div className="p-6 md:p-10 bg-white border rounded-xl mt-5 shadow-lg">

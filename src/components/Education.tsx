@@ -107,11 +107,11 @@ function Education() {
               value={education[i].degreeType}
             >
               <option value="">{t("Please Select")}</option>
-              <option value="Associate's Degree">Associate's Degree</option>
-              <option value="Bachelor's Degree">Bachelor's Degree</option>
-              <option value="Master's Degree">Master's Degree</option>
-              <option value="Doctorate (Ph.D.) Degree">
-                Doctorate (Ph.D.) Degree
+              <option value={t("Associate's Degree")}>{t("Associate's Degree")}</option>
+              <option value={t("Bachelor's Degree")}>{t("Bachelor's Degree")}</option>
+              <option value={t("Master's Degree")}>{t("Master's Degree")}</option>
+              <option value={t("Doctorate (Ph.D.) Degree")}>
+              {t("Doctorate (Ph.D.) Degree")}
               </option>
             </select>
             {t("Field of Study")}

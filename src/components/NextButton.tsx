@@ -1,10 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
 import { nextStep } from "../stores/step";
 import toast from "react-hot-toast";
-import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 function NextButton() {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const { currentStep } = useSelector((state: any) => state.step);
   const { resumeType } = useSelector((state: any) => state.resumeType);
   const handleNextButton = () => {

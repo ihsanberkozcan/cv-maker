@@ -1,7 +1,10 @@
 import { useState } from "react";
 import Feedback from "./Feedback";
 import axios from "axios";
+import { useTranslation } from "react-i18next";
+
 export default function GiveFeedback() {
+  const { t } = useTranslation();
   const [feedbackComponent, setFeedbackComponent] = useState<boolean>(false);
   const [feedbackSended, setFeedbackSended] = useState<boolean>(false);
   const [feedbackRate, setfeedbackRate] = useState<number>(0);
@@ -38,7 +41,7 @@ export default function GiveFeedback() {
           onClick={handleFeedbackButton}
           className="bg-indigo-300 py-3 px-12 text-white rounded-t-lg z-40 shadow-lg border-2 border-indigo-200"
         >
-          Feedback
+          {t("Feedback")}
         </button>
       </div>
     </div>

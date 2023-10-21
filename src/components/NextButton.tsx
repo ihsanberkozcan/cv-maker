@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { nextStep } from "../stores/step";
-import { toast } from "react-toastify";
+import toast from "react-hot-toast";
+import { t } from "i18next";
 
 function NextButton() {
   const dispatch = useDispatch();
@@ -8,15 +9,13 @@ function NextButton() {
   const { resumeType } = useSelector((state: any) => state.resumeType);
   const handleNextButton = () => {
     if (currentStep === 1 && resumeType === "") {
-      toast.warn("Please select a resume style", {
-        position: "top-center",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
+      toast(t("Please select a resume style"), {
+        icon: "🥺",
+        style: {
+          padding: "12px 36px",
+          color: "#f8bd25",
+          fontWeight: 600,
+        },
       });
     } else {
       dispatch(nextStep());

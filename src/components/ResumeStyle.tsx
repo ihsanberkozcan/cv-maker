@@ -3,6 +3,8 @@ import ClassicImage from "../assets/Classic.png";
 import ModernImage from "../assets/Modern.png";
 import { useDispatch, useSelector } from "react-redux";
 import { updateResumeType } from "../stores/resumeType";
+import { t } from "i18next";
+import toast from "react-hot-toast";
 function ResumeType() {
   const dispatch = useDispatch();
   const { resumeType } = useSelector((state: any) => state.resumeType);
@@ -13,7 +15,6 @@ function ResumeType() {
   const [modernButtonTextStyle, setModernButtonTextStyle] =
     useState<String>("");
   useEffect(() => {
-  
     if (resumeType === "classic") {
       setClassicButtonStyle("bg-indigo-300 hover:bg-indigo-300");
       setClassicButtonTextStyle("text-white");
@@ -27,6 +28,7 @@ function ResumeType() {
     }
   }, []);
   const handleSelectResumeType = (type: string) => {
+    toast.dismiss();
     if (type === "classic") {
       dispatch(updateResumeType(type));
       setClassicButtonStyle("bg-indigo-300 hover:bg-indigo-300");
@@ -44,7 +46,7 @@ function ResumeType() {
 
   return (
     <div className="w-full h-full flex items-center justify-center flex-col">
-      <div className="text-2xl mb-10">Please select a resume style</div>
+      <div className="text-2xl mb-10">{t("Please select a resume style")}</div>
       <div className="h-5/6 flex flex-col md:justify-center md:flex-row">
         <button
           className={`resume-type mb-10 md:mr-12 ${classicButtonStyle}`}

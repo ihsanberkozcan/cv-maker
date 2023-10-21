@@ -45,7 +45,8 @@ export const resources = {
         "Add New Award": "Add New Award",
         "File Name": "File Name",
         "Download":"Download",
-        "Loading document...":"Loading document..."
+        "Loading document...":"Loading document...",
+        "Please select a resume style":"Please select a resume style"
       },
     },
     tr: {
@@ -94,7 +95,8 @@ export const resources = {
         "Add New Award": "Yeni Ödül Ekle",
         "File Name": "Dosya Adı",
         "Download":"İndir",
-        "Loading document...":"Belge yükleniyor"
+        "Loading document...":"Belge yükleniyor",
+        "Please select a resume style":"Lütfen bir özgeçmiş stili seçin"
         }
     },
   };

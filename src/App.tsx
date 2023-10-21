@@ -13,10 +13,10 @@ import AnimationRender from "./components/AnimationRender";
 import MainPage from "./components/MainPage";
 import ResumeStyle from "./components/ResumeStyle";
 import { ModernResume } from "./components/ModernResume";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import GiveFeedback from "./components/GiveFeedback";
 import ProgressBar from "./components/ProgressBar";
+import { Toaster } from "react-hot-toast";
 function App() {
   const { currentStep, lastStep } = useSelector((state: any) => state.step);
   const { resumeType } = useSelector((state: any) => state.resumeType);
@@ -161,18 +161,8 @@ function App() {
     <div className="h-full">
       <GiveFeedback />
       <div className="flex flex-col h-screen relative">
-        <ToastContainer
-          position="top-center"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+      <div><Toaster/></div>
+      
         <div
           className={`w-full h-full py-3 md:py-6 px-8 md:px-24 lg:px-72 overflow-x-hidden bg-[#F9F7F7] ${
             currentStep !== 0 ? "mt-20" : ""

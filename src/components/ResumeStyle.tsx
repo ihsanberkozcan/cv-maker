@@ -46,15 +46,15 @@ function ResumeType() {
   };
 
   return (
-    <div className="w-full h-full flex items-center justify-center flex-col">
-      <div className="text-2xl mb-10">{t("Please select a resume style")}</div>
-      <div className="h-5/6 flex flex-col md:justify-center md:flex-row">
+    <div className="w-full flex items-center justify-center flex-col">
+      <div className="text-2xl my-4 md:my-5 font-medium">{t("Please select a resume style")}</div>
+      <div className="flex flex-col justify-around lg:flex-row lg:space-x-10 mb-10 md:mb-0">
         <button
-          className={`resume-type mb-10 md:mr-12 ${classicButtonStyle}`}
+          className={`resume-type ${classicButtonStyle}`}
           onClick={() => handleSelectResumeType("classic")}
         >
           <img
-            className="w-full h-full object-contain drop-shadow-md"
+            className="sm:h-image object-contain drop-shadow-md mb-2"
             src={ClassicImage}
             alt=""
           />
@@ -62,12 +62,13 @@ function ResumeType() {
             {t("Classic")}
           </div>
         </button>
+        
         <button
-          className={`resume-type mb-10 ${modernButtonStyle}`}
+          className={`resume-type ${modernButtonStyle}`}
           onClick={() => handleSelectResumeType("modern")}
         >
           <img
-            className="w-full h-full object-contain drop-shadow-md"
+            className="sm:h-image object-contain drop-shadow-md mb-2"
             src={ModernImage}
             alt=""
           />

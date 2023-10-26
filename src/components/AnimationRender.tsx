@@ -12,7 +12,7 @@ function AnimationRender({ children }: AnimationRenderProps) {
     <>
       <motion.div
         key={currentStep}
-        className="w-full h-full"
+        className={`w-full ${currentStep == 0  ? "h-full": ""}`}
         transition={{ duration: 0.5 }}
         initial={
           currentStep > previousStep

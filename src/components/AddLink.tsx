@@ -110,7 +110,7 @@ function AddLink() {
         <ul className="list-none mt-3">{renderLink()}</ul>
       </div>
       <button
-        className="bg-indigo-300 rounded text-white p-3 mt-5 w-full"
+        className="bg-indigo-300 rounded text-white p-3 mt-5 w-full mb-16"
         onClick={() => addNewLink()}
       >
         {t("Add New Link")}

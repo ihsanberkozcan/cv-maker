@@ -164,8 +164,8 @@ function App() {
       <div><Toaster/></div>
       
         <div
-          className={`w-full h-full py-3 md:py-6 px-8 md:px-24 lg:px-72 overflow-x-hidden bg-[#F9F7F7] ${
-            currentStep !== 0 ? "mt-20" : ""
+          className={`w-full h-full px-8 md:px-24 lg-64 xl:px-72 overflow-x-hidden bg-[#F9F7F7] ${
+            currentStep !== 0 ? "pt-28" : ""
           }`}
         >
           {renderStep(currentStep)}

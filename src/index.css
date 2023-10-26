@@ -31,7 +31,7 @@ button {
 }
 
 .resume-type {
-  @apply p-10 text-indigo-300 rounded-lg border-2 border-indigo-300 hover:bg-indigo-50 transition duration-500 hover:scale-110;
+  @apply px-5 pt-5 pb-2 mb-10 text-indigo-300 rounded-lg border-2 border-indigo-300 hover:bg-indigo-50 transition duration-500 hover:scale-105;
 }
 
 .react-pdf__Page {

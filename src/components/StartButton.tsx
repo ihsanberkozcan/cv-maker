@@ -11,7 +11,7 @@ function StartButton() {
 
   return (
     <button
-      className="bg-indigo-300 rounded text-white p-5 mt-20 w-2/3"
+      className="bg-indigo-300 rounded text-white p-5 mt-20 w-8/12 md:w-2/5"
       onClick={handleStartButton}
     >
       {t("Let's Start")}

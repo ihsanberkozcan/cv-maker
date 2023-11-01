@@ -9,7 +9,6 @@ function AnimationRender({ children }: AnimationRenderProps) {
   const { currentStep, previousStep } = useSelector((state: any) => state.step);
 
   return (
-    <>
       <motion.div
         key={currentStep}
         className={`w-full ${currentStep == 0  ? "h-full": ""}`}
@@ -23,7 +22,6 @@ function AnimationRender({ children }: AnimationRenderProps) {
       >
         {children}
       </motion.div>
-    </>
   );
 }
 

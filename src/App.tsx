@@ -24,151 +24,77 @@ function App() {
     (state: any) => state.userData
   );
 
+  const resumeStep = [
+    <MainPage />,
+    <ResumeStyle />,
+    <UserInput
+      title="Name Surname"
+      keyName="name"
+      inputType="short"
+      inputValue={name}
+    />,
+    <UserInput
+      title="Job Title"
+      keyName="title"
+      inputType="short"
+      inputValue={title}
+    />,
+    <UserInput
+      title="Email"
+      keyName="email"
+      inputType="short"
+      inputPlaceholder="test@test.com"
+      inputValue={email}
+    />,
+    <UserInput
+      title="Phone Number"
+      keyName="phoneNumber"
+      inputType="short"
+      inputPlaceholder="+900000000000"
+      inputValue={phoneNumber}
+    />,
+    <UserInput
+      title="Location"
+      keyName="location"
+      inputType="short"
+      inputValue={location}
+    />,
+    <AddLink />,
+    <UserInput
+      title="Skills"
+      keyName="skills"
+      inputType="long"
+      inputValue={skills}
+    />,
+    <Experience />,
+    <Education />,
+    <Project />,
+    <Certification />,
+    <Award />,
+    <>
+      {resumeType === "classic" ? (
+        <ClassicResume />
+      ) : resumeType === "modern" ? (
+        <ModernResume />
+      ) : null}
+    </>,
+  ];
   const renderStep = (currentStep: number) => {
-    switch (currentStep) {
-      case 0:
-        return (
-          <AnimationRender>
-            <MainPage />
-          </AnimationRender>
-        );
-      case 1:
-        return (
-          <AnimationRender>
-            <ResumeStyle />
-          </AnimationRender>
-        );
-      case 2:
-        return (
-          <AnimationRender>
-            <UserInput
-              title="Name Surname"
-              keyName="name"
-              inputType="short"
-              inputValue={name}
-            />
-          </AnimationRender>
-        );
-      case 3:
-        return (
-          <AnimationRender>
-            <UserInput
-              title="Job Title"
-              keyName="title"
-              inputType="short"
-              inputValue={title}
-            />
-          </AnimationRender>
-        );
-
-      case 4:
-        return (
-          <AnimationRender>
-            <UserInput
-              title="Email"
-              keyName="email"
-              inputType="short"
-              inputPlaceholder="test@test.com"
-              inputValue={email}
-            />
-          </AnimationRender>
-        );
-      case 5:
-        return (
-          <AnimationRender>
-            <UserInput
-              title="Phone Number"
-              keyName="phoneNumber"
-              inputType="short"
-              inputPlaceholder="+900000000000"
-              inputValue={phoneNumber}
-            />
-          </AnimationRender>
-        );
-      case 6:
-        return (
-          <AnimationRender>
-            <UserInput
-              title="Location"
-              keyName="location"
-              inputType="short"
-              inputValue={location}
-            />
-          </AnimationRender>
-        );
-      case 7:
-        return (
-          <AnimationRender>
-            <AddLink />
-          </AnimationRender>
-        );
-      case 8:
-        return (
-          <AnimationRender>
-            <UserInput
-              title="Skills"
-              keyName="skills"
-              inputType="long"
-              inputValue={skills}
-            />
-          </AnimationRender>
-        );
-      case 9:
-        return (
-          <AnimationRender>
-            <Experience />
-          </AnimationRender>
-        );
-      case 10:
-        return (
-          <AnimationRender>
-            <Education />
-          </AnimationRender>
-        );
-      case 11:
-        return (
-          <AnimationRender>
-            <Project />
-          </AnimationRender>
-        );
-      case 12:
-        return (
-          <AnimationRender>
-            <Certification />
-          </AnimationRender>
-        );
-      case 13:
-        return (
-          <AnimationRender>
-            <Award />
-          </AnimationRender>
-        );
-      case 14:
-        return (
-          <AnimationRender>
-            {resumeType === "classic" ? (
-              <ClassicResume />
-            ) : resumeType === "modern" ? (
-              <ModernResume />
-            ) : null}
-          </AnimationRender>
-        );
-      default:
-        break;
-    }
+    return resumeStep[currentStep];
   };
   return (
     <div className="h-full">
       <GiveFeedback />
       <div className="flex flex-col h-screen relative">
-      <div><Toaster/></div>
-      
+        <div>
+          <Toaster />
+        </div>
         <div
           className={`w-full h-full px-8 md:px-24 lg-64 xl:px-72 overflow-x-hidden bg-[#F9F7F7] ${
             currentStep !== 0 ? "pt-28" : ""
           }`}
         >
-          {renderStep(currentStep)}
+          <AnimationRender>{renderStep(currentStep)}</AnimationRender>
         </div>
         {currentStep !== 0 ? (
           <div className=" flex justify-center">

@@ -10,12 +10,13 @@ import {
 import { AiOutlineClose } from "react-icons/ai";
 import { Dispatch, SetStateAction, useRef } from "react";
 import { useTranslation } from "react-i18next";
-
+import { ImSpinner8 } from "react-icons/im";
 interface propsType {
   closeFeedback: () => void;
   handleSubmit: () => void;
   feedbackSended: boolean;
   setfeedbackRate: Dispatch<SetStateAction<number>>;
+  disable: boolean;
 }
 
 export default function Feedback({
@@ -23,8 +24,8 @@ export default function Feedback({
   handleSubmit,
   feedbackSended,
   setfeedbackRate,
+  disable,
 }: propsType) {
-
   const { t } = useTranslation();
   const button1 = useRef(null);
   const button2 = useRef(null);
@@ -115,12 +116,18 @@ export default function Feedback({
               </button>
             </div>
             <div className="flex justify-center">
-              <button
-                onClick={handleSubmit}
-                className="text-indigo-300 mt-3 py-2 px-5 font-semibold hover:bg-indigo-50 rounded-full w-min"
-              >
-                {t("Submit")}
-              </button>
+              {disable ? (
+                <div className="animate-spin py-4 px-5 text-indigo-300">
+                  <ImSpinner8 size={20} />
+                </div>
+              ) : (
+                <button
+                  onClick={handleSubmit}
+                  className="text-indigo-300 mt-3 py-2 px-5 font-semibold hover:bg-indigo-50 rounded-full w-min"
+                >
+                  {t("Submit")}
+                </button>
+              )}
             </div>
           </div>
         ) : (

@@ -8,6 +8,7 @@ export default function GiveFeedback() {
   const [feedbackComponent, setFeedbackComponent] = useState<boolean>(false);
   const [feedbackSended, setFeedbackSended] = useState<boolean>(false);
   const [feedbackRate, setfeedbackRate] = useState<number>(0);
+  const [disable, setDisable] = useState<boolean>(false);
   const handleFeedbackButton = () => {
     setFeedbackComponent(!feedbackComponent);
   };
@@ -16,6 +17,7 @@ export default function GiveFeedback() {
   };
   const handleSubmit = () => {
     if (feedbackRate > 0) {
+      setDisable(true);
       axios
         .post("https://givefeedback.vercel.app/api/givefeedback", {
           ProductId: 714108304697,
@@ -34,6 +36,7 @@ export default function GiveFeedback() {
           handleSubmit={handleSubmit}
           feedbackSended={feedbackSended}
           setfeedbackRate={setfeedbackRate}
+          disable={disable}
         />
       ) : null}
       <div className="flex justify-end">

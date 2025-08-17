@@ -3,6 +3,7 @@ export const resources = {
       translation: {
         "CV Maker": "CV Maker", 
         "Let's Start":"Let's Start",
+        "Create your professional resume in minutes. Stand out and get hired!": "Create your professional resume in minutes. Stand out and get hired!",
         "Name Surname": "Name Surname",
         "Job Title": "Job Title",
         "Location": "Location",
@@ -69,6 +70,7 @@ export const resources = {
       translation:{
         "CV Maker": "Özgeçmiş Oluşturucu",
         "Let's Start":"Hadi Başlayalım",
+        "Create your professional resume in minutes. Stand out and get hired!": "Profesyonel özgeçmişinizi dakikalar içinde oluşturun. Öne çıkın ve işe alın!",
         "Name Surname": "Ad Soyad",
         "Job Title": "İş Unvanı",
         "Location": "Konum",

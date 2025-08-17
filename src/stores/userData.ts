@@ -16,7 +16,7 @@ const initialState: userDataType = {
   location: "",
   phoneNumber: "",
   links: [{ id: 0, websiteName: "", link: "" }],
-  skills: "",
+  skills: [],
   experience: [
     {
       id: 0,

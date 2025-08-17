@@ -144,6 +144,8 @@ export const Content = ({
   headerText,
   sectionTitleText,
   textColor,
+  skillsBubbleBg,
+  skillsBubbleText,
 }: userDataType & resumeColorType) => {
   Font.register({
     family: "Open Sans",
@@ -256,8 +258,36 @@ export const Content = ({
               <View
                 style={{ ...styles.line, backgroundColor: sectionTitleText }}
               />
-              <View style={{ ...styles.subSection, color: textColor }}>
-                <Text style={styles.text}>{skills}</Text>
+              <View
+                style={{
+                  ...styles.subSection,
+                  color: textColor,
+                  flexWrap: "wrap",
+                  justifyContent: "flex-start",
+                  alignItems: "flex-start",
+                }}
+              >
+                {skills.map((skill: string, idx: number) => (
+                  <View
+                    key={idx}
+                    style={{
+                      backgroundColor: skillsBubbleBg || "#e0e7ff",
+                      borderRadius: 3,
+                      paddingVertical: 3,
+                      paddingHorizontal: 8,
+                      marginRight: 6,
+                      marginBottom: 6,
+                      justifyContent: "center",
+                      alignItems: "flex-start",
+                    }}
+                  >
+                    <Text
+                      style={{ color: skillsBubbleText || "#4338ca", fontWeight: "bold", fontSize: 11 }}
+                    >
+                      {skill}
+                    </Text>
+                  </View>
+                ))}
               </View>
             </View>
           ) : null}
@@ -518,6 +548,20 @@ export const ModernResume = () => {
             ColorPickerPossition="right"
           />
         </div>
+        <div className="flex w-full justify-between space-x-2 mb-2">
+          <ColorPicker
+            text="Skills Bubble Bg"
+            defaultColor={useSelector((state:any)=>state.resumeColor.skillsBubbleBg)}
+            mykey={"skillsBubbleBg"}
+            ColorPickerPossition="left"
+          />
+          <ColorPicker
+            text="Skills Bubble Text"
+            defaultColor={useSelector((state:any)=>state.resumeColor.skillsBubbleText)}
+            mykey={"skillsBubbleText"}
+            ColorPickerPossition="right"
+          />
+        </div>
       </div>
       <div className="mt-10">
         <BlobProvider
@@ -540,7 +584,9 @@ export const ModernResume = () => {
               headerText={headerText}
               sectionTitleText={sectionTitleText}
               textColor={textColor}
-            />
+              skillsBubbleBg={useSelector((state:any)=>state.resumeColor.skillsBubbleBg)}
+              skillsBubbleText={useSelector((state:any)=>state.resumeColor.skillsBubbleText)}
+             />
           }
         >
           {({ url }) => {
@@ -624,6 +670,8 @@ export const ModernResume = () => {
         headerText={headerText}
         sectionTitleText={sectionTitleText}
         textColor={textColor}
+        skillsBubbleBg={useSelector((state:any)=>state.resumeColor.skillsBubbleBg)}
+        skillsBubbleText={useSelector((state:any)=>state.resumeColor.skillsBubbleText)}
       />
     </div>
   );
@@ -647,6 +695,8 @@ export const DownloadLink = ({
   headerText,
   sectionTitleText,
   textColor,
+  skillsBubbleBg,
+  skillsBubbleText,
 }: userDataType & resumeColorType) => {
   const { t } = useTranslation();
   return (
@@ -670,6 +720,8 @@ export const DownloadLink = ({
           headerText={headerText}
           sectionTitleText={sectionTitleText}
           textColor={textColor}
+          skillsBubbleBg={skillsBubbleBg}
+          skillsBubbleText={skillsBubbleText}
         />
       }
       fileName={`${fileName}.pdf`}

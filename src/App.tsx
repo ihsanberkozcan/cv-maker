@@ -90,8 +90,10 @@ function App() {
           <Toaster />
         </div>
         <div
-          className={`w-full h-full px-8 md:px-24 lg-64 xl:px-72 overflow-x-hidden bg-[#F9F7F7] ${
-            currentStep !== 0 ? "pt-28" : ""
+          className={`w-full h-full  bg-[#F9F7F7] ${
+            currentStep !== 0
+              ? "pt-28 px-8 md:px-24 lg-64 xl:px-72 overflow-x-hidden"
+              : ""
           }`}
         >
           <AnimationRender>{renderStep(currentStep)}</AnimationRender>

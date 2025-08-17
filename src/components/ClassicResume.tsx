@@ -166,7 +166,9 @@ export const Content = ({
             <View style={styles.line} />
             <View style={styles.section}>
               <Text style={styles.subtitle}>{t("Skills")}</Text>
-              <Text style={styles.text}>{skills}</Text>
+              <Text style={styles.text}>
+                {Array.isArray(skills) ? skills.join(", ") : skills}
+              </Text>
             </View>
           </View>
         ) : null}

@@ -50,6 +50,8 @@ export interface resumeColorType {
   headerText: string;
   sectionTitleText: string;
   textColor: string;
+  skillsBubbleBg?: string;
+  skillsBubbleText?: string;
 }
 export interface userDataType {
   fileName?: string;
@@ -59,7 +61,7 @@ export interface userDataType {
   location: string;
   phoneNumber: string;
   links: Array<linksType>;
-  skills: string;
+  skills: string[];
   experience: Array<experienceType>;
   education: Array<educationType>;
   project: Array<projectType>;

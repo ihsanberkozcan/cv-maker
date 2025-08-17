@@ -6,6 +6,8 @@ const initialState: resumeColorType = {
     headerText:"#ffffff",
     sectionTitleText:"#0000ff",
     textColor: "#000000",
+    skillsBubbleBg: "#e0e7ff",
+    skillsBubbleText: "#4338ca",
 };
 const resumeColor = createSlice({
   name: "resumeColor",

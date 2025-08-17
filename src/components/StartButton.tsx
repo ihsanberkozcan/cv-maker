@@ -1,6 +1,7 @@
 import { useDispatch } from "react-redux";
 import { nextStep } from "../stores/step";
 import { useTranslation } from "react-i18next";
+import "../App.css";
 
 function StartButton() {
   const { t } = useTranslation();
@@ -11,7 +12,8 @@ function StartButton() {
 
   return (
     <button
-      className="bg-indigo-300 rounded text-white p-5 mt-20 w-8/12 md:w-2/5"
+      className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white px-10 py-4 rounded-full text-2xl font-bold shadow-xl hover:scale-105 hover:shadow-2xl transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-pink-300 relative after:absolute after:inset-0 after:rounded-full after:opacity-0 hover:after:opacity-40 after:bg-white after:pointer-events-none"
+
       onClick={handleStartButton}
     >
       {t("Let's Start")}

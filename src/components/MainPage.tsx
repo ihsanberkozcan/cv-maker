@@ -1,6 +1,6 @@
 import StartButton from "./StartButton";
 import { useTranslation } from "react-i18next";
-
+import site from "../assets/site.svg";
 function MainPage() {
   const { t } = useTranslation();
   const { i18n } = useTranslation();
@@ -31,7 +31,7 @@ function MainPage() {
           <StartButton />
         </div>
         <img
-          src="/site.svg"
+          src={site}
           alt="CV Maker"
           className="hidden md:block w-80 h-80 ml-10 drop-shadow-lg"
         />

@@ -282,7 +282,11 @@ export const Content = ({
                     }}
                   >
                     <Text
-                      style={{ color: skillsBubbleText || "#4338ca", fontWeight: "bold", fontSize: 11 }}
+                      style={{
+                        color: skillsBubbleText || "#4338ca",
+                        fontWeight: "bold",
+                        fontSize: 11,
+                      }}
                     >
                       {skill}
                     </Text>
@@ -522,7 +526,7 @@ export const ModernResume = () => {
           </h2>
         </div>
 
-        <div className="flex w-full justify-between space-x-2 mb-2">
+        <div className="flex w-full flex-wrap gap-2 mb-2">
           <ColorPicker
             text="Header Background"
             defaultColor={headerBackground}
@@ -539,7 +543,7 @@ export const ModernResume = () => {
             text="Section Title Text"
             defaultColor={sectionTitleText}
             mykey="sectionTitleText"
-            ColorPickerPossition="right"
+            ColorPickerPossition="left"
           />
           <ColorPicker
             text="Text"
@@ -547,17 +551,19 @@ export const ModernResume = () => {
             mykey="textColor"
             ColorPickerPossition="right"
           />
-        </div>
-        <div className="flex w-full justify-between space-x-2 mb-2">
           <ColorPicker
-            text="Skills Bubble Bg"
-            defaultColor={useSelector((state:any)=>state.resumeColor.skillsBubbleBg)}
+            text={t("Skills Bubble Background")}
+            defaultColor={useSelector(
+              (state: any) => state.resumeColor.skillsBubbleBg
+            )}
             mykey={"skillsBubbleBg"}
-            ColorPickerPossition="left"
+            ColorPickerPossition="right"
           />
           <ColorPicker
-            text="Skills Bubble Text"
-            defaultColor={useSelector((state:any)=>state.resumeColor.skillsBubbleText)}
+            text={t("Skills Bubble Text")}
+            defaultColor={useSelector(
+              (state: any) => state.resumeColor.skillsBubbleText
+            )}
             mykey={"skillsBubbleText"}
             ColorPickerPossition="right"
           />
@@ -584,9 +590,13 @@ export const ModernResume = () => {
               headerText={headerText}
               sectionTitleText={sectionTitleText}
               textColor={textColor}
-              skillsBubbleBg={useSelector((state:any)=>state.resumeColor.skillsBubbleBg)}
-              skillsBubbleText={useSelector((state:any)=>state.resumeColor.skillsBubbleText)}
-             />
+              skillsBubbleBg={useSelector(
+                (state: any) => state.resumeColor.skillsBubbleBg
+              )}
+              skillsBubbleText={useSelector(
+                (state: any) => state.resumeColor.skillsBubbleText
+              )}
+            />
           }
         >
           {({ url }) => {
@@ -670,8 +680,12 @@ export const ModernResume = () => {
         headerText={headerText}
         sectionTitleText={sectionTitleText}
         textColor={textColor}
-        skillsBubbleBg={useSelector((state:any)=>state.resumeColor.skillsBubbleBg)}
-        skillsBubbleText={useSelector((state:any)=>state.resumeColor.skillsBubbleText)}
+        skillsBubbleBg={useSelector(
+          (state: any) => state.resumeColor.skillsBubbleBg
+        )}
+        skillsBubbleText={useSelector(
+          (state: any) => state.resumeColor.skillsBubbleText
+        )}
       />
     </div>
   );

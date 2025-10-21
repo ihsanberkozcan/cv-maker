@@ -2,6 +2,7 @@ import { useState } from "react";
 import Feedback from "./Feedback";
 import axios from "axios";
 import { useTranslation } from "react-i18next";
+import { AnimatePresence } from "framer-motion";
 
 export default function GiveFeedback() {
   const { t } = useTranslation();
@@ -29,24 +30,28 @@ export default function GiveFeedback() {
     }
   };
   return (
-    <div className="fixed right-5 sm:right-10 bottom-0 z-50">
-      {feedbackComponent ? (
-        <Feedback
-          closeFeedback={closeFeedback}
-          handleSubmit={handleSubmit}
-          feedbackSended={feedbackSended}
-          setfeedbackRate={setfeedbackRate}
-          disable={disable}
-        />
-      ) : null}
-      <div className="flex justify-end">
-        <button
-          onClick={handleFeedbackButton}
-          className="bg-indigo-300 py-3 px-12 text-white rounded-t-lg z-40 shadow-lg border-2 border-indigo-200"
-        >
-          {t("Feedback")}
-        </button>
-      </div>
-    </div>
+<div className="fixed right-5 sm:right-10 bottom-0 z-50">
+  <AnimatePresence>
+    {feedbackComponent && (
+      <Feedback
+        key="feedback"
+        closeFeedback={closeFeedback}
+        handleSubmit={handleSubmit}
+        feedbackSended={feedbackSended}
+        setfeedbackRate={setfeedbackRate}
+        disable={disable}
+      />
+    )}
+  </AnimatePresence>
+
+  <div className="flex justify-end">
+    <button
+      onClick={handleFeedbackButton}
+      className="bg-indigo-300 py-3 px-12 text-white rounded-t-lg z-40 shadow-lg border-2 border-indigo-200"
+    >
+      {t("Feedback")}
+    </button>
+  </div>
+</div>
   );
 }

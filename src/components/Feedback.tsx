@@ -51,7 +51,8 @@ export default function Feedback({
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1, x: 0, y: -15 }}
-      transition={{ duration: 0.4 }}
+      exit={{ opacity: 0, y: 50 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="px-10 py-8 bg-white rounded-md shadow-2xl flex flex-col justify-center">
         <button onClick={closeFeedback} className="absolute top-3 right-3 p-2">

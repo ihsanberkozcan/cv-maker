@@ -21,7 +21,7 @@ function MainPage() {
       <div className="flex flex-row items-center justify-center w-full max-w-4xl z-10">
         <div className="flex flex-col items-center justify-center max-w-xl w-auto px-6 py-10">
           <h1 className="text-center mb-4 text-6xl md:text-7xl font-extrabold font-mono bg-gradient-to-r from-indigo-500 to-blue-500 bg-clip-text text-transparent drop-shadow-lg">
-            CV Maker
+            {t("CV Maker")}
           </h1>
           <h2 className="text-center mb-8 text-xl md:text-2xl font-light text-gray-700 max-w-2xl">
             {t(

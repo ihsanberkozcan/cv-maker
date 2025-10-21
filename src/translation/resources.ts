@@ -62,8 +62,11 @@ export const resources = {
         "Header Text":"Header Text",
         "Section Title Text":"Section Title Text",
         "Text":"Text",
-        "Colors":"Colors"
-
+        "Colors":"Colors",
+        "Add a skill": "Add a skill",
+        "Add": "Add",
+        "Skills Bubble Background": "Skills Bubble Background",
+        "Skills Bubble Text": "Skills Bubble Text"
       },
     },
     tr: {
@@ -129,7 +132,11 @@ export const resources = {
         "Header Text":"Başlık Metni",
         "Section Title Text":"Bölüm Başlık Metni",
         "Text":"Metin",
-        "Colors":"Renkler"
+        "Colors":"Renkler",
+        "Add a skill": "Bir yetenek ekle",
+        "Add": "Ekle",
+        "Skills Bubble Background": "Beceri Arka Planı",
+        "Skills Bubble Text": "Beceri Yazısı"
         }
     },
   };

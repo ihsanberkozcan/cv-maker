@@ -44,7 +44,7 @@ export default function ColorPicker({
 
   useOnClickOutside(ref, buttonRef, () => setDisplayColorPicker(false));
   return (
-    <div className="relative mb-4 w-1/4">
+    <div className="relative mb-4 w-28">
       <button
         ref={buttonRef}
         onClick={handleClick}
